@@ -1,15 +1,13 @@
 # _WarriorCMS_
 
 [![Project Status](https://img.shields.io/badge/Status-Early%20Alpha-yellow.svg?style=flat-square)](#)
-[![Project Version](https://img.shields.io/badge/Version-0.1.5-green.svg?style=flat-square)](#)
+[![Project Version](https://img.shields.io/badge/Version-0.0.1-green.svg?style=flat-square)](#)
 
 **WarriorCMS** is an Open Source CMS for world of warcraft p-server projects developed with [CodeIgniter](https://codeigniter.com/) framework
 
 | Developer | Status |
 | :----------- | :---------- |
 | DuelistRage | Active |
-| XàXà | Active |
-| TheKingPhantom | Active |
 
 ### Table of contents
 
@@ -18,8 +16,8 @@
 
 ### Features
 
-- [x] Multi Realms
-- [x] Easy to use installer
+- [ ] Multi Realms
+- [ ] Easy to use installer
 - [ ] Register
 - [ ] Login
 - [ ] Start page (Under development)
