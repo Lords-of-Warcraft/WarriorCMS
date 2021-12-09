@@ -5,9 +5,9 @@
 
 **WarriorCMS** is an Open Source CMS for world of warcraft p-server projects developed with [Laravel](https://laravel.com)
 
-| Developer | Status |
-| :----------- | :---------- |
-| DuelistRage | Active |
+| Developer | Status | Tasks |
+| :----------- | :---------- | :---------- |
+| DuelistRage | Active | Back/Front-End Developement |
 
 ### Table of contents
 
@@ -17,10 +17,10 @@
 ### Features
 
 - [ ] Multi Realms
-- [ ] Easy to use installer
+- [ ] Easy to use installer (under developement)
 - [ ] Register
 - [ ] Login
-- [ ] Start page (Under development)
+- [ ] Start page
 - [ ] Multi Language support
 - [ ] Forum
 - [ ] Recruit a friend
@@ -31,7 +31,10 @@
 
 ### Requirements
 
+[Composer](https://getcomposer.org/)
+
 | PHP Extension | Apache2 Modules |
 | :----------- | :---------- |
 | Soap | Rewrite |
 | Curl | Headers |
+
