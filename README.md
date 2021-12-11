@@ -17,7 +17,7 @@
 ### Features
 
 - [ ] Multi Realms
-- [ ] Easy to use installer (under developement)
+- [ ] Easy to use installer
 - [ ] Register
 - [ ] Login
 - [ ] Start page
@@ -27,6 +27,7 @@
 - [ ] Admin panel
 - [ ] Module installer
 - [ ] Profile
+- [ ] Friend list
 - [ ] Soap and ingame shop
 
 ### Requirements
