@@ -1,9 +1,5 @@
 @extends('installer::layouts.master')
-@section('darkmodeslider')
-<div class="slidercontainer">
-    <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
-</div>
-@endsection
+
 @section('content')
 <div class="center">
     <img src="/img/logo.png" width="200px">
