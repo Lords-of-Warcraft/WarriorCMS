@@ -13,6 +13,7 @@
       <br>
         <div class="content">
             Thank you for chosing WarriorCMS. <br>
+            You are currently running on CMS version {{ config('warriorcms.version')}}<br>
             To navigate through the installer, use the arrow keys or the menu at the Bottom.<br><br>
             To install the CMS you need a running World of Warcraft core with a finished Database.<br><br>
             For more information about installing a private server visit the wiki of your Core or Repack:<br>
@@ -34,9 +35,14 @@
       <hr>
       <br>
         <div class="content">
-            <form>
+                <form action="javascript:void(0);">
+                    <label for="webname">Website Name:</label><br>
+                    <input type="text" id="fname" name="fname" value="{{ config('warriorcms.website_name')}}"><br>
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
 
-            </form>
 
             <div class="button">
                 <div class="prev">
