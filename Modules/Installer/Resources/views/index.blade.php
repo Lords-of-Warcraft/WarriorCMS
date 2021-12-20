@@ -5,13 +5,109 @@
     <img src="/img/logo.png" width="200px">
 </div>
 <div class="center mt-5">
-    <i data-feather="caret-left" class="section-arrow"></i>
-    <div class="box" id="start">
-      <h2>Welcome</h2>
+    <div class="box activeBox" id="start">
+        <div class="header">
+            <h2>Welcome</h2>
+        </div>
       <hr>
-      <p>WarriorCMS is an open source content menagement system<br> build in Laravel by the World of Warriors Private Server Team.</p>
+      <br>
+        <div class="content">
+            Thank you for chosing WarriorCMS. <br>
+            To navigate through the installer, use the arrow keys or the menu at the Bottom.<br><br>
+            To install the CMS you need a running World of Warcraft core with a finished Database.<br><br>
+            For more information about installing a private server visit the wiki of your Core or Repack:<br>
+            <ul>
+                <li><a href="https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130077/Installation+Guide" target="_blank">TrinityCore</a></li>
+                <li><a href="https://github.com/cmangos/issues/wiki" target="_blank">CMaNGOS</a></li>
+            </ul>
+            <div class="button">
+                <div class="next">
+                    <button class="btn" onclick="changeActiveBox('website', 'navwebsite')"><span>Next </span></button>
+                </div>
+            </div>
+        </div>
     </div>
-    <i data-feather="caret-right" class="section-arrow"></i>
+    <div class="box" id="website">
+        <div class="header">
+            <h2>Website Settings</h2>
+        </div>
+      <hr>
+      <br>
+        <div class="content">
+            <form>
+
+            </form>
+
+            <div class="button">
+                <div class="prev">
+                    <button class="btn" onclick="changeActiveBox('start', 'navstart')"><span> Prev</span></button>
+                </div>
+                <div class="next">
+                    <button class="btn" onclick="changeActiveBox('database', 'navdatabase')"><span>Next </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box" id="database">
+        <div class="header">
+            <h2>Database Settings</h2>
+        </div>
+      <hr>
+      <br>
+        <div class="content">
+            <form>
+
+            </form>
+            <div class="button">
+                <div class="prev">
+                    <button class="btn" onclick="changeActiveBox('website', 'navwebsite')"><span> Prev</span></button>
+                </div>
+                <div class="next">
+                    <button class="btn" onclick="changeActiveBox('server', 'navserver')"><span>Next </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box" id="server">
+        <div class="header">
+            <h2>Server Settings</h2>
+        </div>
+      <hr>
+      <br>
+        <div class="content">
+            <form>
+
+            </form>
+            <div class="button">
+                <div class="prev">
+                    <button class="btn" onclick="changeActiveBox('database', 'navdatabase')"><span> Prev</span></button>
+                </div>
+                <div class="next">
+                    <button class="btn" onclick="changeActiveBox('user', 'navuser')"><span>Next </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box" id="user">
+        <div class="header">
+            <h2>User Settings</h2>
+        </div>
+      <hr>
+      <br>
+        <div class="content">
+            <form>
+
+            </form>
+            <div class="button">
+                <div class="prev">
+                    <button class="btn" onclick="changeActiveBox('server', 'navserver')"><span> Prev</span></button>
+                </div>
+                <div class="next">
+                    <button class="btn"><span>Finish </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -19,32 +115,32 @@
 <div class="menu">
     <div class="navigation">
         <ul>
-            <li class="list active">
-                <a href="#start">
+            <li class="list active" id="navstart">
+                <a href="#" onclick="changeActiveBox('start')">
                     <span class="icon"><i data-feather="home"></i></span>
                     <span class="text">Start</span>
                 </a>
             </li>
-            <li class="list">
-                <a href="#website">
+            <li class="list" id="navwebsite">
+                <a href="#" onclick="changeActiveBox('website')">
                     <span class="icon"><i data-feather="globe"></i></span>
                     <span class="text">Website</span>
                 </a>
             </li>
-            <li class="list">
-                <a href="#">
+            <li class="list" id="navdatabase">
+                <a href="#" onclick="changeActiveBox('database')">
                     <span class="icon"><i data-feather="database"></i></span>
                     <span class="text">Database</span>
                 </a>
             </li>
-            <li class="list">
-                <a href="#">
+            <li class="list" id="navserver">
+                <a href="#" onclick="changeActiveBox('server')">
                     <span class="icon"><i data-feather="server"></i></span>
                     <span class="text">Realms</span>
                 </a>
             </li>
-            <li class="list">
-                <a href="#">
+            <li class="list" id="navuser">
+                <a href="#" onclick="changeActiveBox('user')">
                     <span class="icon"><i data-feather="user"></i></span>
                     <span class="text">User</span>
                 </a>

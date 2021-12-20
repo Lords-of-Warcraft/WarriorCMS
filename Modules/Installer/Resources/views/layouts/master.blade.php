@@ -15,21 +15,25 @@
         @yield('darkmodeslider')
         @yield('content')
         @yield('menu')
-
         <script>
-            const list = document.querySelectorAll('.list');
-            function activeLink(){
-                list.forEach((item) => 
-                item.classList.remove('active'));
-                this.classList.add('active');
-            }
-            list.forEach((item) => 
-            item.addEventListener('click',activeLink));
+            
+        function changeActiveBox(boxnew, newlink) {
+            var currentbox = document.getElementsByClassName('activeBox');
+            var newbox = document.getElementById(boxnew);
+            var currentnavlink = document.getElementsByClassName('active');
+            var newnavlink = document.getElementById(newlink)
+
+            currentbox[0].classList.remove('activeBox');
+            newbox.classList.add('activeBox');
+
+            currentnavlink[0].classList.remove('active');
+            newnavlink.classList.add('active');
+        }
         </script>
         <script>
             feather.replace()
         </script>
         {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/installer.js') }}"></script> --}}
+        <script src="{{ mix('js/installer.js') }}"></script>
     </body>
 </html>

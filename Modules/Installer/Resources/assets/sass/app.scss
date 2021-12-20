@@ -22,6 +22,17 @@ body
     background-color: var(--clr-dark);
 }
 
+li
+{
+    list-style-type: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: var(--clr-primary);
+}
+
 .menu
 {
     display: flex;
@@ -175,20 +186,22 @@ body
     top: 0;
 }
 
-.section-arrow
+.box 
 {
-    width: 75px;
-    height: 75px;
-    color: var(--clr-primary);
+    display: none;
+    background-color: #18181b;
+    border-top: 3px solid var(--clr-primary);
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px var(--clr-shadow);
+    padding: 30px;
+    margin: 20px;
+    max-width: 50vw;
+    max-height: 50vh;
+    min-width: 50vw;
+    min-height: 50vh;
+    overflow: auto;
+    color:var(--clr-white);
     transition: 0.5s;
-}
-
-.section-arrow:hover
-{
-    cursor: pointer;
-    width: 85px;
-    height: 85px;
-    color: var(--clr-primary);
 }
 
 .box h2
@@ -201,18 +214,13 @@ body
     color: var(--clr-white);
 }
 
-.box 
-{
-    border-top: 3px solid var(--clr-primary);
-    border-radius: 5px;
-    box-shadow: 0px 30px 40px -20px var(--clr-shadow);
-    padding: 30px;
-    margin: 20px;  
+.activeBox {
+    display: block!important;
 }
 
-img 
+.box .header
 {
-    float: right;
+    display: flex;
 }
 
 @media (max-width: 450px) 
@@ -232,8 +240,111 @@ img
     }
 }
 
+.box .button
+{
+    margin-top: 4vh;
+    display: flex;
+}
+
+.box .button .next .btn
+{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: var(--clr-primary);
+    border: none;
+    color: var(--clr-white);
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.box .button .prev .btn
+{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: var(--clr-primary);
+    border: none;
+    color: var(--clr-white);
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.box .button .prev .btn span 
+{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.box .button .next .btn span 
+{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.box .button .prev .btn span:before 
+{
+    content: '\00ab';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.box .button .next .btn span:after 
+{
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.box .button .next .btn:hover span 
+{
+    padding-right: 25px;
+}
+
+.box .button .prev .btn:hover span 
+{
+    padding-left: 25px;
+}
+  
+.box .button .next .btn:hover span:after 
+{
+    opacity: 1;
+    right: 0;
+}
+  
+.box .button .prev .btn:hover span:before 
+{
+    opacity: 1;
+    right: 0;
+}
+
+.box .button .next
+{
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.box .button  .prev
+{
+    align-self: flex-start;
+}
+
 .mt-5
 {
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
