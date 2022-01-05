@@ -35,11 +35,16 @@
       <hr>
       <br>
         <div class="content">
+            <p>Setup basic website settings here:</p><br>
                 <form action="javascript:void(0);">
                     <label for="webname">Website Name:</label><br>
-                    <input type="text" id="fname" name="fname" value="{{ config('warriorcms.website_name')}}"><br>
-                    <label for="lname">Last name:</label><br>
-                    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                    <input type="text" id="webname" name="webname" placeholder="{{ config('warriorcms.website_name')}}"><br>
+                    <label for="language">Language:</label><br>
+                    <select id="language" name="language">
+                        <option value="en">English</option>
+                        <option value="de">German</option>
+                    </select>
+                    <br><br>
                     <input type="submit" value="Submit">
                 </form>
 
@@ -61,8 +66,20 @@
       <hr>
       <br>
         <div class="content">
-            <form>
-
+            <p>Here you will setup the database for your website</p><br>
+            <form action="javascript:void(0);">
+                <label for="webhostname">Hostname:</label><br>
+                <input type="text" id="webhostname" name="webhostname" placeholder="localhost"><br>
+                <label for="webport">Port:</label><br>
+                <input type="text" id="webport" name="webport" placeholder="3306"><br>
+                <label for="webdatabasename">Database name:</label><br>
+                <input type="text" id="webdatabasename" name="webdatabasename" placeholder="warriorcms"><br>
+                <label for="webdatabaseuser">Database user:</label><br>
+                <input type="text" id="webdatabaseuser" name="webdatabaseuser" placeholder="warriorcms"><br>
+                <label for="webdatabaseuserpw">Database user password:</label><br>
+                <input type="text" id="webdatabaseuserpw" name="webdatabaseuserpw" placeholder="1234"><br>
+                <br>
+                <input type="submit" value="Submit">
             </form>
             <div class="button">
                 <div class="prev">
