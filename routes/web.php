@@ -14,14 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $config = config('warriorcms.installstatus');
-    if ($config == 0)
-    {
-        $url = '/installer';
-    } else if ($config == 1)
-    {
-        $url = '/home';
-    }
-
-    header('Location: '.$url);
-});
+    //
+})->middleware('installstatus');
