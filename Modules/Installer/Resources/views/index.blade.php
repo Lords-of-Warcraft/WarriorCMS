@@ -14,7 +14,7 @@
         <div class="content">
             Thank you for chosing WarriorCMS. <br>
             You are currently running on CMS version {{ config('warriorcms.version')}}<br>
-            To navigate through the installer, use the arrow keys or the menu at the Bottom.<br><br>
+            To navigate through the installer, use the menu at the bottom or the buttons in the box.<br><br>
             To install the CMS you need a running World of Warcraft core with a finished Database.<br><br>
             For more information about installing a private server visit the wiki of your Core or Repack:<br>
             <ul>
@@ -44,6 +44,9 @@
                         <option value="en">English</option>
                         <option value="de">German</option>
                     </select>
+                    <label for="adminlevel">Admin Level:</label><br>
+                    <input type="number" id="adminlevel" name="adminlevel" value="3">
+                    <p style="font-size: 12px">Input the Security Level a user needs to access the Admin Panel here (In most cases you can leave it at 3)</p>
                     <br><br>
                     <input type="submit" value="Submit">
                 </form>
@@ -68,12 +71,12 @@
         <div class="content">
             <p>Here you will setup the database for your website</p><br>
             <form action="javascript:void(0);">
-                <label for="webhostname">Hostname:</label><br>
-                <input type="text" id="webhostname" name="webhostname" placeholder="localhost"><br>
-                <label for="webport">Port:</label><br>
-                <input type="text" id="webport" name="webport" placeholder="3306"><br>
-                <label for="webdatabasename">Database name:</label><br>
-                <input type="text" id="webdatabasename" name="webdatabasename" placeholder="warriorcms"><br>
+                <label for="username">Hostname:</label><br>
+                <input type="text" id="username" name="username" placeholder="localhost"><br>
+                <label for="password">Port:</label><br>
+                <input type="text" id="password" name="password" placeholder="3306"><br>
+                <label for="reppw">Database name:</label><br>
+                <input type="text" id="reppw" name="reppw" placeholder="warriorcms"><br>
                 <label for="webdatabaseuser">Database user:</label><br>
                 <input type="text" id="webdatabaseuser" name="webdatabaseuser" placeholder="warriorcms"><br>
                 <label for="webdatabaseuserpw">Database user password:</label><br>
@@ -93,14 +96,26 @@
     </div>
     <div class="box" id="server">
         <div class="header">
-            <h2>Server Settings</h2>
+            <h2>Realm Settings</h2>
+            <button class="btn">Add realm</button>
         </div>
       <hr>
       <br>
         <div class="content">
-            <form>
-
-            </form>
+            <table border=1>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Database URL</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>test</td>
+                        <td>localhost</td>
+                        <td><button class="btn"><span class="icon"><i data-feather="x"></i></span></button></td>
+                </tr>
+            </table>
             <div class="button">
                 <div class="prev">
                     <button class="btn" onclick="changeActiveBox('database', 'navdatabase')"><span> Prev</span></button>
@@ -118,8 +133,16 @@
       <hr>
       <br>
         <div class="content">
-            <form>
-
+            <p>Create the masteruser with the highest security level.</p><br>
+            <form action="javascript:void(0);">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" placeholder="admin"><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" placeholder="secure password"><br>
+                <label for="reppw">Repeat password:</label><br>
+                <input type="password" id="reppw" name="reppw" placeholder="secure password"><br>
+                <br>
+                <input type="submit" value="Submit">
             </form>
             <div class="button">
                 <div class="prev">
