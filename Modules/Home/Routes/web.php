@@ -12,5 +12,5 @@
 */
 
 Route::prefix('home')->group(function() {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->middleware('installstatus');
 });

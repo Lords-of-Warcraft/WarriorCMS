@@ -12,5 +12,5 @@
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->middleware('installstatus');
 });
