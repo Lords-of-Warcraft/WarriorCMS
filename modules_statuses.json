@@ -1,4 +1,5 @@
 {
     "Installer": true,
-    "Home": true
+    "Home": true,
+    "Admin": true
 }
