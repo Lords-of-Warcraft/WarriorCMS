@@ -12,12 +12,13 @@
 ### Table of contents
 
 [Features](#Features)
+[Screenshots](#Screenshots)
 [Requirements](#Requirements)
 
 ### Features
 
 - [ ] Multi Realms
-- [ ] Easy to use installer
+- [ ] Easy to use installer -- Curently under developement
 - [ ] Register
 - [ ] Login
 - [ ] Start page
@@ -29,6 +30,10 @@
 - [ ] Profile
 - [ ] Friend list
 - [ ] Soap and ingame shop
+
+### Screenshots
+
+![Alt text](/screenshots/Screenshot1.png?raw=true "Installer")
 
 ### Requirements
 
