@@ -8,11 +8,11 @@
 
     <div class="content-container">
         <div class="flex-container">
-            <h1 class="life-craft text-white">Server Installation</h1>
+            <h1 class="poppins text-white">Server Installation</h1>
             <div class="break"></div>
             <p class="poppins text-white">To continue the installation, please fill out all fields below</p>
             <div class="break"></div>
-            <form method="POST" action="javascript:void(0);" class="mt-25">
+            <form method="POST" action="javascript:void(0);" class="mt-25" onsubmit="save(2)">
                 @csrf
 
                 <h3 class="category"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  General</span></h3>

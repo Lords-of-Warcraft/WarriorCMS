@@ -40,10 +40,11 @@ body {
   background-image: url(/img/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #172D42;
 }
 
 .headline {
-  position: fixed;
+  position: absolute;
   right: 5px;
   margin-top: 10px;
 }
@@ -84,11 +85,13 @@ form {
 }
 
 .input:hover {
-  border-bottom-width: 2px;
+  background-color: var(--clr-white);
+  color: var(--clr-dark);
 }
 
 .input:focus {
-  border-bottom-width: 2px;
+  background-color: var(--clr-white);
+  color: var(--clr-dark);
 }
 
 .select {
@@ -181,6 +184,10 @@ form {
 
 .mt-25 {
   margin-top: 25px;
+}
+
+.mb-4 {
+  margin-bottom: 4px;
 }
 
 .ml-10 {
