@@ -12,5 +12,11 @@
 */
 
 Route::prefix('installer')->group(function() {
-    Route::get('/', 'InstallerController@index');
+    Route::middleware(['status'])->group(function() {
+        Route::get('/', 'InstallerController@web');
+
+        Route::get('/web', 'InstallerController@web');
+
+        Route::get('/server', 'InstallerController@server');
+    });
 });

@@ -12,9 +12,14 @@ class InstallerController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function web()
     {
-        return view('installer::index');
+        return view('installer::web');
+    }
+
+    public function server()
+    {
+        return view('installer::server');
     }
 
     /**

@@ -22,8 +22,9 @@ class InstallerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(\Illuminate\Routing\Router $router)
     {
+        $router->middlewareGroup('status', [\Modules\Installer\Http\Middleware\Status::class]);
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();

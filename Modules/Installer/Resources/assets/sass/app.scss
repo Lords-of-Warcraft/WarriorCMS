@@ -1,12 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-*
-
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+/*
+* Set variables
+*/
 
 :root
 {
@@ -15,416 +9,240 @@
     --clr-dark: #222327;
     --clr-shadow: #1a1a1a;
     --clr-white: #fff;
+
+    --fnt-lifecraft: LifeCraft;
+    --fnt-poppins: 'Poppins', sans-serif;
 }
+
+// end variables
+
+/*
+* Fonts
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+@font-face {
+    font-family: LifeCraft;
+    src: url('/fonts/LifeCraft_Font.ttf');
+}
+
+// end fonts
+
+/*
+* Base Values
+*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//end base values
+
+/*
+* Styling
+*/
 
 body
 {
     min-height: 100vh;
-    background-color: var(--clr-dark);
+    background-image: url(/img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-li
-{
-    list-style-type: none;
+.headline {
+    position: fixed;
+    right: 5px;
+    margin-top: 10px;
 }
 
-a
-{
-    text-decoration: none;
-    color: var(--clr-primary);
+.content-container {
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin: auto;
+
+    width: 50%;
+    max-height: 50%;
 }
 
-.menu
-{
+.flex-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    bottom: 10px;
-    position: absolute;
-    width: 100vw;
 }
 
-.navigation
-{
-    width: 400px;
-    height: 70px;
-    background: var(--clr-white);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+.break {
+    flex-basis: 100%;
+    height: 0;
 }
 
-.navigation ul 
-{
-    display: flex;
-    width: 350px;
+form {
+    width: 60%;
 }
 
-.navigation ul li
-{
-    position: relative;
-    list-style-type: none;
-    width: 70px;
-    height: 70px;
-    z-index: 1;
+.input {
+    background-color: transparent;
+    padding: 10px;
+    border: 0px;
+    border-bottom: 1px solid var(--clr-primary);
+    outline: none;
+    transition: 0.3s;
 }
 
-.navigation ul li a
-{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
+.input:hover {
+    border-bottom-width: 2px;
 }
 
-.navigation ul li a .icon
-{
-    position: relative;
-    display: block;
-    line-height: 75px;
-    font-size: 1.5em;
-    text-align: center;
-    transition: 0.5s;
-    color:  var(--clr-dark);
+.input:focus {
+    border-bottom-width: 2px;
 }
 
-.navigation ul li.active a .icon
-{
-    transform: translateY(-32px);
+.select {
+    background-color: transparent;
+    padding: 10px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom: 1px solid var(--clr-primary);
 }
 
-.navigation ul li a .text
-{
-    position: absolute;
-    color: var(--clr-dark);
-    font-weight: 400;
-    font-size: 0.75em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.navigation ul li.active a .text
-{
-    opacity: 1;
-    transform: translateY(10px);
-}
-
-.indicator {
-    position: absolute;
-    top: -50%;
-    width: 70px;
-    height: 70px;
-    background: var(--clr-primary);
-    border-radius: 50%;
-    border: 6px solid var(--clr-dark);
-    transition: 0.5s;
-}
-
-.indicator::before
-{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius: 20px;
-    box-shadow: 1px -10px 0 0 var(--clr-dark);
-}
-
-.indicator::after
-{
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-left-radius: 20px;
-    box-shadow: -1px -10px 0 0 var(--clr-dark);
-}
-
-.navigation ul li:nth-child(1).active ~ .indicator
-{
-    transform: translateX(calc(70px * 0))
-}
-
-.navigation ul li:nth-child(2).active ~ .indicator
-{
-    transform: translateX(calc(70px * 1))
-}
-
-.navigation ul li:nth-child(3).active ~ .indicator
-{
-    transform: translateX(calc(70px * 2))
-}
-
-.navigation ul li:nth-child(4).active ~ .indicator
-{
-    transform: translateX(calc(70px * 3))
-}
-
-.navigation ul li:nth-child(5).active ~ .indicator
-{
-    transform: translateX(calc(70px * 4))
-}
-
-.center
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-}
-
-.box 
-{
-    display: none;
-    background-color: #18181b;
-    border-top: 3px solid var(--clr-primary);
-    border-radius: 5px;
-    box-shadow: 10px 5px 5px var(--clr-shadow);
-    padding: 30px;
-    margin: 20px;
-    max-width: 50vw;
-    max-height: 50vh;
-    min-width: 50vw;
-    min-height: 50vh;
-    overflow: auto;
-    color:var(--clr-white);
-    transition: 0.5s;
-}
-
-.box h2
-{
-    color: var(--clr-white);
-}
-
-.box p 
-{
-    color: var(--clr-white);
-}
-
-.activeBox {
-    display: block!important;
-}
-
-.box .header
-{
-    display: flex;
-}
-
-@media (max-width: 450px) 
-{
-    .box 
-    {
-        height: 200px;
-    }
-}
-
-@media (max-width: 950px) and (min-width: 450px) 
-{
-    .box 
-    {
-        text-align: center;
-        height: 180px;
-    }
-}
-
-.box .button
-{
-    margin-top: 3vh;
-    display: flex;
-}
-
-.box .button .next .btn
-{
-    display: inline-block;
-    border-radius: 4px;
-    background-color: var(--clr-primary);
+.select:focus {
     border: none;
-    color: var(--clr-white);
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
+    outline: none;
 }
 
-.box .button .prev .btn
-{
-    display: inline-block;
-    border-radius: 4px;
+.submit {
+    border-width: 1px;
+    border-color: var(--clr-primary);
+    background-color: transparent;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.submit:hover {
+    cursor: pointer;
     background-color: var(--clr-primary);
-    border: none;
-    color: var(--clr-white);
+}
+
+.category {
+    display: flex;
+    align-items: center;
+}
+
+.category::after {
+    content: '';
+    flex: 1 1 auto;
+    margin-left: 1rem;
+    height: 1px;
+    background-color: var(--clr-white);
+}
+
+.group {
+    display: table;
+    width: 100%
+}
+
+.group-item {
+    display: table-cell;
+}
+
+.socials {
+    bottom: 0;
+    margin: auto;
     text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
 }
 
-.box .button .prev .btn span 
-{
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.box .button .next .btn span 
-{
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.box .button .prev .btn span:before 
-{
-    content: '\00ab';
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.box .button .next .btn span:after 
-{
-    content: '\00bb';
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.box .button .next .btn:hover span 
-{
-    padding-right: 25px;
-}
-
-.box .button .prev .btn:hover span 
-{
-    padding-left: 25px;
-}
-  
-.box .button .next .btn:hover span:after 
-{
-    opacity: 1;
-    right: 0;
-}
-  
-.box .button .prev .btn:hover span:before 
-{
-    opacity: 1;
-    right: 0;
-}
-
-.box .button .next
-{
-    align-self: flex-end;
-    margin-left: auto;
-}
-
-.box .button  .prev
-{
-    align-self: flex-start;
-}
-
-.mt-5
-{
-    margin-top: 5vh;
-}
-
-input[type=text], input[type=password], input[type=number], select 
-{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-  
-  input[type=submit] 
-{
-    width: 100%;
-    background-color: #4CAF50;
+.socials-github {
+    background: #2c4762;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-  
-  input[type=submit]:hover
-{
-    background-color: #45a049;
 }
 
-@media (max-width: 575.98px) { 
-    .menu {
-        visibility: hidden;
-    }
+// end styling
+
+/*
+* Misc
+*/
+
+.life-craft {
+    font-family: var(--fnt-lifecraft);
 }
 
-#server {
-    .header {
-        .btn {
-            width: 100px;
-            height: 32px;;
-            float: right;
-            color: var(--clr-white);
-            background-color: var(--clr-primary);
-            border-radius: 1.25rem;
-            border-width: 0;
-            margin-left: auto;
-            margin-bottom: 3px;
-            transition: 0.2s;
-        }
+.poppins {
+    font-family: var(--fnt-poppins);
+}
 
-        .btn:hover {
-            width: 130px;
-            cursor: pointer;
-        }
-    }
+.full {
+    width: 100%;
+}
 
-    .content {
-        table {
-            width: 100%;
-            text-align: center;
-            .btn {
-                width: 50px;
-                height: 50px;
-                color: var(--clr-white);
-                background-color: var(--clr-primary);
-                border-radius: 50%;
-                border-width: 0;
-                margin: 5px;
-                transition: 0.2s;
-            }
+.half {
+    width: 50%;
+}
+
+.mt-4 {
+    margin-top: 4px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.text-black {
+    color: var(--clr-dark);
+}
+
+.text-white {
+    color: var(--clr-white);
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-bold {
+    font-weight: bolder;
+}
+
+.fs-30 {
+    font-size: 30px;
+}
     
-            .btn:hover {
-                cursor: pointer;
-                background-color: var(--clr-danger);
-            }
-        }
-    }
 
+// end misc
+
+/*
+* Feather
+*/
+
+.feather-social {
+    padding: 20px 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
 }
 
+.feater-social:hover {
+    opacity: 0.7;
+}
+
+.feather-16{
+    width: 16px;
+    height: 16px;
+}
+
+// end feather
