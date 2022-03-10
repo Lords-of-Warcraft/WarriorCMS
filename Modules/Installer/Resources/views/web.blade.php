@@ -30,15 +30,6 @@
                     <x-installer::input class="input full text-white" name="weburl" id="weburl" type="text" placeholder="https://warriorcms.com" />
                 </div>
 
-                <!-- Website Language -->
-                <div class="mt-4">
-                    <x-installer::label for="lang" :value="__('Website Language')" class="poppins" />
-                    <div class="break"></div>
-                    <select class="select text-white full" name="lang" id="lang">
-                        <option class="text-black" value="en">English (only supported atm)</option>
-                    </select>
-                </div>
-
                 <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i>  Database</span></h3>
                 <!-- Database Settings -->
                 <div class="mt-4">

@@ -108,7 +108,6 @@ class InstallerController extends Controller
         $validator = Validator::make($request->all(), [
             'webname' => 'required|min:3',
             'weburl' => 'required|url',
-            'lang' => 'required',
             'webdbhostname' => 'required',
             'webdbhport' => 'required',
             'webdbname' => 'required',
@@ -122,7 +121,6 @@ class InstallerController extends Controller
 
         $this->writeconfig('app', 'name', $request->webname);
         $this->writeconfig('app', 'url', $request->weburl);
-        $this->writeconfig('app', 'locale', $request->lang);
         $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
         $this->writeconfig('database', 'connections.web.port', $request->webdbport);
         $this->writeconfig('database', 'connections.web.database', $request->webdname);
