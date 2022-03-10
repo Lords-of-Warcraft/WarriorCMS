@@ -124,7 +124,10 @@ class InstallerController extends Controller
         $this->writeconfig('app', 'url', $request->weburl);
         $this->writeconfig('app', 'locale', $request->lang);
         $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
-        $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
+        $this->writeconfig('database', 'connections.web.port', $request->webdbport);
+        $this->writeconfig('database', 'connections.web.database', $request->webdname);
+        $this->writeconfig('database', 'connections.web.username', $request->webduser);
+        $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
 
         return redirect('/installer/server')->with('success', 'Web settings saved');
      }
