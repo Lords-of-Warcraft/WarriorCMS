@@ -19,9 +19,7 @@ class Installstatus
         $config = config('warriorcms.installstatus');
         if ($config == 0)
         {
-                echo '<script type="text/javascript">
-                window.location = "'.config('app.url').'/installer/web"
-                </script>';
+            return redirect('/installer/web');
         } else if ($config == 1)
         {
             return $next($request);
