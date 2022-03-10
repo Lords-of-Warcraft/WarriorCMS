@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Vluzrmos\LanguageDetector\Providers\LanguageDetectorServiceProvider::class,
 
         /*
          * Application Service Providers...

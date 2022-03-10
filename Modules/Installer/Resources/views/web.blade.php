@@ -8,9 +8,9 @@
 
     <div class="content-container">
         <div class="flex-container">
-            <h1 class="poppins text-white">Web Installation</h1>
+            <h1 class="poppins text-white">{{ __('installer::general.heading') }}</h1>
             <div class="break"></div>
-            <p class="poppins text-white">To continue the installation, please fill out all fields below</p>
+            <p class="poppins text-white">{{ __('installer::general.topdesc') }}</p>
             <div class="break"></div>
             <form method="POST" action="/installer/webinstall" class="mt-25">
                 @csrf
