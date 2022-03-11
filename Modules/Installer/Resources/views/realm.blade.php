@@ -61,8 +61,8 @@
                         </div>
                     </div>
                 </div>
-                <x-installer::button class="mt-25 full submit text-white poppins mb-4">
-                <i class="" style="margin-right: 5px" data-feather="save"></i>
+                <x-installer::button class="mt-25 full submit text-white mb-4">
+                <span class="poppins text-uppercase text-bold">{{ __('installer::general.add') }}</span>
                 </x-installer::button>
             </form>
         </div>

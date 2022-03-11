@@ -2,11 +2,15 @@
 
 return [
     'heading'       => 'Installation',
+    'add'           => 'Hinzufügen',
+    'actions'       => 'Aktionen',
+    'edit'          => 'Bearbeiten',
+    'delete'        => 'Löschen',
     'topdesc'       => 'Bitte fülle alle felder aus um fortzufahren.',
     'general'       => 'Allgemein',
     'webname'       => 'Website Name',
     'weburl'        => 'Website URL',
-    'database'      => 'datenbank',
+    'database'      => 'Datenbank',
     'database_host' => 'Database Hostname',
     'database_port' => 'Database Port',
     'database_name' => 'Database Name',
