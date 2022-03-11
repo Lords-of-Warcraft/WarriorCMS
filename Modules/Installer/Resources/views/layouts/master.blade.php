@@ -20,6 +20,9 @@
         @section('index')
         @show
 
+        <h1 class="life-craft headline" style="color:white;">WarriorCMS by DuelistRag3</h1>
+        <x-installer::app-logo />
+
         <div class="container">
             @yield('content')
         </div>

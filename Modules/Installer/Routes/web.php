@@ -19,6 +19,8 @@ Route::prefix('installer')->group(function() {
 
         Route::get('/server', 'InstallerController@server');
 
+        Route::get('/server/realm', 'InstallerController@realm');
+
         Route::post('/webinstall', 'InstallerController@installweb');
     });
 });

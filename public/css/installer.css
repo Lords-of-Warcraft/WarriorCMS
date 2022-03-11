@@ -140,6 +140,18 @@ form {
   color: white;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid var(--clr-primary);
+  text-align: left;
+  padding: 8px;
+}
+
 /*
 * Misc
 */
@@ -194,6 +206,10 @@ form {
 
 .text-bold {
   font-weight: bolder;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .fs-30 {

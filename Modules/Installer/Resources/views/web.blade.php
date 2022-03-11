@@ -3,8 +3,6 @@
 @section('title', 'Web Installer')
 
 @section('content')
-    <h1 class="life-craft headline" style="color:white;">WarriorCMS by DuelistRag3</h1>
-    <x-installer::app-logo />
 
     <div class="content-container">
         <div class="flex-container">

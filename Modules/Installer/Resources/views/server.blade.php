@@ -3,8 +3,8 @@
 @section('title', 'Web Installer')
 
 @section('content')
-    <h1 class="life-craft headline" style="color:white;">WarriorCMS by DuelistRag3</h1>
-    <x-installer::app-logo />
+
+    
 
     <div class="content-container">
         <div class="flex-container">
@@ -15,25 +15,7 @@
             <form method="POST" action="javascript:void(0);" class="mt-25" onsubmit="save(2)">
                 @csrf
 
-                <h3 class="category"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  General</span></h3>
-                <!-- Website Name -->
-                <div class="mt-4">
-                    <x-installer::label for="webname" :value="__('Website Name')" class="poppins" />
-                    <div class="break"></div>
-                    <x-installer::input class="input full text-white" name="webname" id="webname" type="text"  />
-                </div>
-
-                <!-- Website Language -->
-                <div class="mt-4">
-                    <x-installer::label for="lang" :value="__('Website Language')" class="poppins" />
-                    <div class="break"></div>
-                    <select class="select text-white full">
-                        <option class="text-black" value="eng">English</option>
-                        <option class="text-black" value="ger">German</option>
-                    </select>
-                </div>
-
-                <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i> Auth Database</span></h3>
+                <h3 class="category"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i> Auth Database</span></h3>
                 <!-- Database Settings -->
                 <div class="mt-4">
                     <div class="group">
@@ -65,6 +47,25 @@
                         </div>
                     </div>
                 </div>
+
+                <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  Realms</span></h3>
+                <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/server/addrealm'">
+                <i class="" style="margin-right: 5px" data-feather="plus"></i>
+                </x-installer::button>
+
+                <table class="full mt-25 text-white poppins">
+                    <tr>
+                        <th>Name</th>
+                        <th>Database</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>Blutkessel</td>
+                        <td>bluetkessel_db</td>
+                        <td class="text-center">Edit<br>Delete</td>
+                    </tr>
+                </table>
+
                 <x-installer::button class="mt-25 full submit text-white poppins">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>
                 </x-installer::button>

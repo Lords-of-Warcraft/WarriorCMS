@@ -23,6 +23,16 @@ class InstallerController extends Controller
         return view('installer::server');
     }
 
+    public function realm()
+    {
+        return view('installer::realm');
+    }
+
+    public function checkdbconnect()
+    {
+        return false;
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -109,7 +119,7 @@ class InstallerController extends Controller
             'webname' => 'required|min:3',
             'weburl' => 'required|url',
             'webdbhostname' => 'required',
-            'webdbhport' => 'required',
+            'webdbport' => 'required',
             'webdbname' => 'required',
             'webdbuser' => 'required',
             'webdbpw' => 'required'
@@ -120,11 +130,12 @@ class InstallerController extends Controller
         }
 
         $this->writeconfig('app', 'name', $request->webname);
+        $this->writeconfig('warriorcms', 'website_name', $request->webname);
         $this->writeconfig('app', 'url', $request->weburl);
         $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
         $this->writeconfig('database', 'connections.web.port', $request->webdbport);
-        $this->writeconfig('database', 'connections.web.database', $request->webdname);
-        $this->writeconfig('database', 'connections.web.username', $request->webduser);
+        $this->writeconfig('database', 'connections.web.database', $request->webdbname);
+        $this->writeconfig('database', 'connections.web.username', $request->webdbuser);
         $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
 
         return redirect('/installer/server')->with('success', 'Web settings saved');

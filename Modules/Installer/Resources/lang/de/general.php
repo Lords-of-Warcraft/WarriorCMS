@@ -12,4 +12,8 @@ return [
     'database_name' => 'Database Name',
     'database_user' => 'Database Nutzername',
     'database_pass' => 'Database Passwort',
+
+    'addrealm'      => 'Realm hinzufügen',
+    'realmname'     => 'Realm Name',
+    'realmportal'   => 'Realm Portal',
 ];
