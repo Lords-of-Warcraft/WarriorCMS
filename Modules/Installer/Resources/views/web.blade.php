@@ -3,7 +3,6 @@
 @section('title', 'Web Installer')
 
 @section('content')
-
     <div class="content-container">
         <div class="flex-container">
             <h1 class="poppins text-white">Web {{ __('installer::general.heading') }}</h1>

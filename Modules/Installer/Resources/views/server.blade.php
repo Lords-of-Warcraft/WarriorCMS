@@ -14,7 +14,21 @@
             <div class="break"></div>
             <form method="POST" action="javascript:void(0);" class="mt-25" onsubmit="save(2)">
                 @csrf
+                @if ($connected == false)
 
+                <div class="full poppins text-white text-center message-box warning mb-4">
+                <span class="text-uppercase text-bold">{{ __('installer::general.warning')}}! </span>{{ __('installer::general.conn_fail')}}
+                </div>
+
+                @endif
+
+                @if ($connected == true)
+
+                <div class="full poppins text-white text-center message-box success mb-4">
+                <span>{{ __('installer::general.conn_success')}}</span>
+                </div>
+
+                @endif
 
                 <h3 class="category"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  Realms</span></h3>
                 <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/server/realm'">

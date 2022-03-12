@@ -21,17 +21,33 @@ class InstallerController extends Controller
 
     public function server()
     {
-        return view('installer::server');
+        if ($this->testconnection() == true) {
+            $connected = true;
+        } else {
+            $connected = false;
+        }
+        return view('installer::server', ['connected' => $connected]);
+    }
+
+    public function testconnection()
+    {
+        $config = config('database.connections.web.host');
+
+        if ($config == 'placeholder') {
+            return false;
+        } 
+        
+        try {
+            DB::connection('web')->table('realms')->get();
+            return true;
+        } catch (Throwable $e) {
+            return false;
+        }
     }
 
     public function realm()
     {
         return view('installer::realm');
-    }
-
-    public function checkdbconnect()
-    {
-        return false;
     }
 
     /**

@@ -8,6 +8,7 @@
   --clr-dark: #222327;
   --clr-shadow: #1a1a1a;
   --clr-white: #fff;
+  --clr-success: #28A745;
   --fnt-lifecraft: LifeCraft;
   --fnt-poppins: "Poppins", sans-serif;
 }
@@ -150,6 +151,18 @@ th {
   border: 1px solid var(--clr-primary);
   text-align: left;
   padding: 8px;
+}
+
+.message-box {
+  padding: 10px;
+}
+
+.warning {
+  background-color: var(--clr-danger);
+}
+
+.success {
+  background-color: var(--clr-success);
 }
 
 /*
