@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Webdatabase extends Migration
+class V0_1CreateRealmTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class Webdatabase extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('realms', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('realmportal');
+            $table->string('db_name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class Webdatabase extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('realms');
     }
 }

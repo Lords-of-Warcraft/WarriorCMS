@@ -20,4 +20,5 @@ return [
     'addrealm'      => 'Realm hinzufügen',
     'realmname'     => 'Realm Name',
     'realmportal'   => 'Realm Portal',
+    'realm_desc'    => 'Alle Realms müssen auf dem gleichen SQL-Server sein wie die Auth DB.',
 ];

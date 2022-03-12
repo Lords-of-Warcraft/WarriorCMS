@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class InstallerController extends Controller
 {
@@ -139,5 +140,30 @@ class InstallerController extends Controller
         $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
 
         return redirect('/installer/server')->with('success', 'Web settings saved');
+     }
+
+     public function addrealm(Request $request)
+     {
+        $validator = Validator::make($request->all(), [
+            'realmname' => 'required|min:3',
+            'realmportal' => 'required|url',
+            'realmdbname' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+        try {
+            DB::table('realms')->insert([
+                'name' => $request->realmname,
+                'realmportal' => $request->realmportal,
+                'db_name' => $request->realmdbname,
+            ]);
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
      }
 }
