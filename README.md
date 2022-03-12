@@ -1,6 +1,6 @@
 # _WarriorCMS_
 
-[![Project Status](https://img.shields.io/badge/Status-20Alpha-yellow.svg?style=flat-square)](#)
+[![Project Status](https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat-square)](#)
 [![Project Version](https://img.shields.io/badge/Version-0.1.0-green.svg?style=flat-square)](#)
 
 **WarriorCMS** is an Open Source CMS for world of warcraft p-server projects developed with [Laravel](https://laravel.com)
