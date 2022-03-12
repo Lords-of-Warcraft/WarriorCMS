@@ -170,6 +170,12 @@ class InstallerController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
+        $connected = $this->testconnection();
+
+        if ($connected == false) {
+            return back()->with('warning', __('installer::general.conn_fail'));
+        }
+
         try {
             DB::table('realms')->insert([
                 'name' => $request->realmname,
