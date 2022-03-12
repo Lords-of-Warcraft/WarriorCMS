@@ -41,8 +41,21 @@
 
 [Composer](https://getcomposer.org/)
 
+[PHP 8.0^](https://www.php.net)
+
 | PHP Extension | Apache2 Modules |
 | :----------- | :---------- |
 | Soap | Rewrite |
 | Curl | Headers |
+| BCMath |
+| Ctype |
+| DOM |
+| Fileinfo |
+| JSON |
+| Mbstring |
+| OpenSSL |
+| PCRE |
+| PDO |
+| Tokenizer |
+| XML |
 
