@@ -1,6 +1,6 @@
 @extends('installer::layouts.master')
 
-@section('title', 'Web Installer')
+@section('title', 'Server')
 
 @section('content')
 
@@ -61,12 +61,18 @@
                             <div class="break"></div>
                             <x-installer::input class="input full text-white" name="authdbhost" id="authdbhost" type="text"  />
                         </div>
-                        <!-- Database Name -->
+                        <!-- Database Port -->
                         <div class="group-item ml-10" style="border-left: 10px solid transparent">
-                            <x-installer::label for="authdbname" :value="__('installer::general.database_name')" class="poppins" />
+                            <x-installer::label for="authdbport" :value="__('installer::general.database_port')" class="poppins" />
                             <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="authdbname" id="authdbname" type="text"  />
+                            <x-installer::input class="input full text-white" name="authdbport" id="authdbport" type="text" placeholder="3306" />
                         </div>
+                    </div>
+                    <!-- Database Name -->
+                    <div class="full mt-4">
+                        <x-installer::label for="authdbname" :value="__('installer::general.database_name')" class="poppins" />
+                        <div class="break"></div>
+                        <x-installer::input class="input full text-white" name="authdbname" id="authdbname" type="text"  />
                     </div>
                     <div class="group mt-4">
                         <!-- Database Username -->

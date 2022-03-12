@@ -50,6 +50,11 @@ class InstallerController extends Controller
         return view('installer::realm');
     }
 
+    public function user()
+    {
+        return view('installer::createuser');
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -129,63 +134,87 @@ class InstallerController extends Controller
      * @param Request $request
      */
 
-     public function installweb(Request $request) 
-     {
+    public function installweb(Request $request) 
+    {
 
+       $validator = Validator::make($request->all(), [
+           'webname' => 'required|min:3',
+           'weburl' => 'required|url',
+           'webdbhostname' => 'required',
+           'webdbport' => 'required',
+           'webdbname' => 'required',
+           'webdbuser' => 'required',
+           'webdbpw' => 'required'
+       ]);
+
+       if ($validator->fails()) {
+           return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+       }
+
+       $this->writeconfig('app', 'name', $request->webname);
+       $this->writeconfig('warriorcms', 'website_name', $request->webname);
+       $this->writeconfig('app', 'url', $request->weburl);
+       $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
+       $this->writeconfig('database', 'connections.web.port', $request->webdbport);
+       $this->writeconfig('database', 'connections.web.database', $request->webdbname);
+       $this->writeconfig('database', 'connections.web.username', $request->webdbuser);
+       $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
+
+       return redirect('/installer/server')->with('success', 'Web settings saved');
+    }
+
+    public function installserver(Request $request) {
         $validator = Validator::make($request->all(), [
-            'webname' => 'required|min:3',
-            'weburl' => 'required|url',
-            'webdbhostname' => 'required',
-            'webdbport' => 'required',
-            'webdbname' => 'required',
-            'webdbuser' => 'required',
-            'webdbpw' => 'required'
+            'authdbhostname' => 'required',
+            'authdbport' => 'required',
+            'authdbname' => 'required',
+            'authdbuser' => 'required',
+            'authdbpw' => 'required'
         ]);
 
         if ($validator->fails()) {
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        $this->writeconfig('app', 'name', $request->webname);
-        $this->writeconfig('warriorcms', 'website_name', $request->webname);
-        $this->writeconfig('app', 'url', $request->weburl);
-        $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
-        $this->writeconfig('database', 'connections.web.port', $request->webdbport);
-        $this->writeconfig('database', 'connections.web.database', $request->webdbname);
-        $this->writeconfig('database', 'connections.web.username', $request->webdbuser);
-        $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
+        $this->writeconfig('database', 'connections.auth.host', $request->authdbhostname);
+        $this->writeconfig('database', 'connections.auth.port', $request->authdbport);
+        $this->writeconfig('database', 'connections.auth.database', $request->authdbname);
+        $this->writeconfig('database', 'connections.auth.username', $request->authdbuser);
+        $this->writeconfig('database', 'connections.auth.password', $request->authdbpw);
 
-        return redirect('/installer/server')->with('success', 'Web settings saved');
-     }
+        return redirect('/installer/createmasteruser')->with('success', 'Server settings saved');
+    }
 
-     public function addrealm(Request $request)
-     {
-        $validator = Validator::make($request->all(), [
-            'realmname' => 'required|min:3',
-            'realmportal' => 'required|url',
-            'realmdbname' => 'required',
-        ]);
+     
 
-        if ($validator->fails()) {
-            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
-        }
+    public function addrealm(Request $request)
+    {
+       $validator = Validator::make($request->all(), [
+           'realmname' => 'required|min:3',
+           'realmportal' => 'required|url',
+           'realmdbname' => 'required',
+       ]);
 
-        $connected = $this->testconnection();
+       if ($validator->fails()) {
+           return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+       }
 
-        if ($connected == false) {
-            return back()->with('warning', __('installer::general.conn_fail'));
-        }
+       $connected = $this->testconnection();
 
-        try {
-            DB::table('realms')->insert([
-                'name' => $request->realmname,
-                'realmportal' => $request->realmportal,
-                'db_name' => $request->realmdbname,
-            ]);
-        } catch (Throwable $e) {
-            report($e);
+       if ($connected == false) {
+           return back()->with('warning', __('installer::general.conn_fail'));
+       }
 
-            return false;
-        }
-     }
+       try {
+           DB::table('realms')->insert([
+               'name' => $request->realmname,
+               'realmportal' => $request->realmportal,
+               'db_name' => $request->realmdbname,
+           ]);
+       } catch (Throwable $e) {
+           report($e);
+
+           return false;
+       }
+    }
 }

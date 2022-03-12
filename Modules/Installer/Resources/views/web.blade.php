@@ -1,6 +1,6 @@
 @extends('installer::layouts.master')
 
-@section('title', 'Web Installer')
+@section('title', 'Web')
 
 @section('content')
     <div class="content-container">
