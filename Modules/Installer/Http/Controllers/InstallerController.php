@@ -162,7 +162,7 @@ class InstallerController extends Controller
        $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
 
        try {
-        Artisan::call('migrate');
+        Artisan::call('migrate --force');
        } catch (Throwable $e) {
            return back()->with('errors', 'Something went wrong');
        }
