@@ -19,6 +19,8 @@ Route::prefix('installer')->group(function() {
 
         Route::get('/server', 'InstallerController@server');
 
+        Route::get('/server/auth', 'InstallerController@auth');
+
         Route::get('/server/realm', 'InstallerController@realm');
 
         Route::get('/user', 'InstallerController@user');
@@ -26,5 +28,7 @@ Route::prefix('installer')->group(function() {
         Route::post('/server/addrealm', 'InstallerController@addrealm');
 
         Route::post('/webinstall', 'InstallerController@installweb');
+
+        Route::post('/server/addauth', 'InstallerController@addauthdb');
     });
 });

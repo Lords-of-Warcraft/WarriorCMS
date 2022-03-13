@@ -22,6 +22,9 @@ return [
     'realmportal'   => 'Realm Portal',
     'realm_desc'    => 'Alle Realms müssen auf dem gleichen SQL-Server sein wie die Auth DB.',
 
+    'addauth'       => 'Auth hinzufügen',
+    'authdb'        => 'Auth database',
+    
     'warning'       => 'Warnung',
     'conn_fail'     => 'Web Datenbank verbindung nicht erfolgreich',
     'conn_success'  => 'Web Datenbank verbindung erfolgreich',

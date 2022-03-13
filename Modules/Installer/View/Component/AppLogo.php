@@ -1,7 +1,7 @@
 <?php
 namespace Modules\Installer\View\Component;
 use Illuminate\View\Component;
-class app-logo extends Component
+class app_logo extends Component
 {
     /**
      * Create a new component instance.
@@ -20,6 +20,6 @@ class app-logo extends Component
      */
     public function render()
     {
-        return view('installer::components.app-logo');
+        return view('installer::components.app_logo');
     }
 }

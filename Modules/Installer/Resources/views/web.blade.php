@@ -61,7 +61,7 @@
                         <div class="group-item ml-10" style="border-left: 10px solid transparent">
                             <x-installer::label for="webdbpw" :value="__('installer::general.database_pass')" class="poppins" />
                             <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="webdbpw" id="webdbpw" type="text" placeholder="1234" />
+                            <x-installer::input class="input full text-white" name="webdbpw" id="webdbpw" type="password" placeholder="1234" />
                         </div>
                     </div>
                 </div>

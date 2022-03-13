@@ -95,6 +95,20 @@ form {
   color: var(--clr-dark);
 }
 
+.select {
+  background-color: transparent;
+  padding: 10px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: 1px solid var(--clr-primary);
+}
+
+.select:focus {
+  border: none;
+  outline: none;
+}
+
 .submit {
   border-width: 1px;
   border-color: var(--clr-primary);

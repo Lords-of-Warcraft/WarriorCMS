@@ -20,6 +20,10 @@ class InstallerController extends Controller
         return view('installer::web');
     }
 
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
     public function server()
     {
         if ($this->testconnection() == true) {
@@ -27,9 +31,18 @@ class InstallerController extends Controller
         } else {
             $connected = false;
         }
-        return view('installer::server', ['connected' => $connected]);
+        
+        $realms = $this->getallrealms();
+
+        $auths = $this->getallauth();
+
+        return view('installer::server', ['connected' => $connected, 'realms' => $realms, 'auths' => $auths]);
     }
 
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
     public function testconnection()
     {
         $config = config('database.connections.web.host');
@@ -46,11 +59,36 @@ class InstallerController extends Controller
         }
     }
 
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
     public function realm()
     {
-        return view('installer::realm');
+        if ($this->testconnection() == true) {
+            $connected = true;
+        } else {
+            $connected = false;
+        }
+
+        $auths = $this->getallauth();
+
+        return view('installer::realm', ['connected' => $connected, 'auths' => $auths]);
     }
 
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
+    public function auth()
+    {
+        return view('installer::auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return Renderable
+     */
     public function user()
     {
         return view('installer::createuser');
@@ -170,36 +208,75 @@ class InstallerController extends Controller
        return redirect('/installer/server')->with('success', 'Web settings saved');
     }
 
-    public function installserver(Request $request) {
+    public function addauthdb(Request $request) {
         $validator = Validator::make($request->all(), [
-            'authdbhostname' => 'required',
-            'authdbport' => 'required',
-            'authdbname' => 'required',
-            'authdbuser' => 'required',
-            'authdbpw' => 'required'
+            'dbhost' => 'required',
+            'dbport' => 'required',
+            'dbname' => 'required',
+            'dbuser' => 'required',
+            'dbpass' => 'required'
         ]);
 
         if ($validator->fails()) {
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        $this->writeconfig('database', 'connections.auth.host', $request->authdbhostname);
-        $this->writeconfig('database', 'connections.auth.port', $request->authdbport);
-        $this->writeconfig('database', 'connections.auth.database', $request->authdbname);
-        $this->writeconfig('database', 'connections.auth.username', $request->authdbuser);
-        $this->writeconfig('database', 'connections.auth.password', $request->authdbpw);
+        $connected = $this->testconnection();
 
-        return redirect('/installer/createmasteruser')->with('success', 'Server settings saved');
+       if ($connected == false) {
+           return back()->with('warning', __('installer::general.conn_fail'));
+       }
+
+       try {
+           DB::table('auth')->insert([
+               'dbhost' => $request->dbhost,
+               'dbport' => $request->dbport,
+               'dbname' => $request->dbname,
+               'dbuser' => $request->dbuser,
+               'dbpass' => $request->dbpass,
+           ]);
+
+           return redirect('/installer/server/')->with('success', 'Auth database added');
+       } catch (Throwable $e) {
+           report($e);
+
+           return false;
+       }
     }
 
-     
+    public function getallrealms()
+    {
+        $connected = $this->testconnection();
+
+        if ($connected == false) {
+            return false;
+        }
+
+        return DB::connection('web')->table('realms')->get();
+    }
+
+    public function getallauth()
+    {
+        $connected = $this->testconnection();
+
+        if ($connected == false) {
+            return false;
+        }
+
+        return DB::connection('web')->table('auth')->get();
+    }
 
     public function addrealm(Request $request)
     {
        $validator = Validator::make($request->all(), [
-           'realmname' => 'required|min:3',
-           'realmportal' => 'required|url',
-           'realmdbname' => 'required',
+            'realmname' => 'required|min:3',
+            'realmportal' => 'required',
+            'authref' => 'required',
+            'realmdbhost' => 'required',
+            'realmdbport' => 'required',
+            'realmdbname' => 'required',
+            'realmdbuser' => 'required',
+            'realmdbpass' => 'required'
        ]);
 
        if ($validator->fails()) {
@@ -214,10 +291,17 @@ class InstallerController extends Controller
 
        try {
            DB::table('realms')->insert([
-               'name' => $request->realmname,
+               'realmname' => $request->realmname,
                'realmportal' => $request->realmportal,
-               'db_name' => $request->realmdbname,
+               'auth_database' => $request->authref,
+               'dbhost' => $request->realmdbhost,
+               'dbport' => $request->realmdbport,
+               'dbname' => $request->realmdbname,
+               'dbuser' => $request->realmdbuser,
+               'dbpass' => $request->realmdbpass,
            ]);
+
+           return redirect('/installer/server/')->with('success', 'Realm added');
        } catch (Throwable $e) {
            report($e);
 

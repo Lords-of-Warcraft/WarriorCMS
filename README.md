@@ -19,12 +19,12 @@
 
 ### Features
 
-- [ ] Multi Realms
+- [x] Multi Realms
 - [ ] Easy to use installer -- Curently under developement
 - [ ] Register
 - [ ] Login
 - [ ] Start page
-- [ ] Multi Language support
+- [x] Multi Language support
 - [ ] Forum
 - [ ] Recruit a friend
 - [ ] Admin panel

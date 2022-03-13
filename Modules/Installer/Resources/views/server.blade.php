@@ -3,9 +3,6 @@
 @section('title', 'Server')
 
 @section('content')
-
-    
-
     <div class="content-container">
         <div class="flex-container">
             <h1 class="poppins text-white">Server {{ __('installer::general.heading') }}</h1>
@@ -30,7 +27,48 @@
 
                 @endif
 
-                <h3 class="category"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  Realms</span></h3>
+                <h3 class="category mt-4"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i> Auth {{ __('installer::general.database') }}</span></h3>
+                <div class="mt-4">
+                    <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/server/auth'">
+                    <i class="" style="margin-right: 5px" data-feather="plus"></i>
+                    </x-installer::button>
+
+                    <table class="full mt-25 text-white poppins">
+                        <tr>
+                            <th>#</th>
+                            <th>{{ __('installer::general.database_host') }}</th>
+                            <th>{{ __('installer::general.database') }}</th>
+                            <th>{{ __('installer::general.actions') }}</th>
+                        </tr>
+                        @if ($connected == false)
+                        <tr>
+                            <th>Error</th>
+                        </tr>
+                        @else
+
+                            @if ($auths->count() > 0 )
+
+                            @foreach($auths as $auth)
+                            <tr>
+                                <th>{{ $auth->id }}</th>
+                                <th>{{ $auth->dbhost }}</th>
+                                <th>{{ $auth->dbname }}</th>
+                                <th>Edit</th>
+                            </tr>
+                            @endforeach
+
+                            @else 
+                            <tr>
+                                <th>Error</th>
+                            </tr>
+
+                            @endif
+
+                        @endif
+                    </table>
+                </div>
+
+                <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="settings"></i>  Realms</span></h3>
                 <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/server/realm'">
                 <i class="" style="margin-right: 5px" data-feather="plus"></i>
                 </x-installer::button>
@@ -40,55 +78,37 @@
                         <th>{{ __('installer::general.realmname') }}</th>
                         <th>{{ __('installer::general.realmportal') }}</th>
                         <th>{{ __('installer::general.database') }}</th>
+                        <th>Auth #</th>
                         <th>{{ __('installer::general.actions') }}</th>
                     </tr>
-                    <tr>
-                        {{-- <td>Blutkessel</td>
-                        <td>logon.warriorcms.com</td>
-                        <td>blutkessel_characters</td>
-                        <td class="text-center">{{ __('installer::general.edit') }}<br>{{ __('installer::general.delete') }}</td> --}}
-                        <td>Kein Realm eingetragen</td>
-                    </tr>
-                </table>
+                    @if ($connected == false)
+                        <tr>
+                            <th>Error</th>
+                        </tr>
+                    @else
 
-                <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i> Auth {{ __('installer::general.database') }}</span></h3>
-                <!-- Database Settings -->
-                <div class="mt-4">
-                    <div class="group">
-                        <!-- Database Hostname -->
-                        <div class="group-item">
-                            <x-installer::label for="authdbhost" :value="__('installer::general.database_host')" class="poppins" />
-                            <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="authdbhost" id="authdbhost" type="text"  />
-                        </div>
-                        <!-- Database Port -->
-                        <div class="group-item ml-10" style="border-left: 10px solid transparent">
-                            <x-installer::label for="authdbport" :value="__('installer::general.database_port')" class="poppins" />
-                            <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="authdbport" id="authdbport" type="text" placeholder="3306" />
-                        </div>
-                    </div>
-                    <!-- Database Name -->
-                    <div class="full mt-4">
-                        <x-installer::label for="authdbname" :value="__('installer::general.database_name')" class="poppins" />
-                        <div class="break"></div>
-                        <x-installer::input class="input full text-white" name="authdbname" id="authdbname" type="text"  />
-                    </div>
-                    <div class="group mt-4">
-                        <!-- Database Username -->
-                        <div class="group-item">
-                            <x-installer::label for="authdbuser" :value="__('installer::general.database_user')" class="poppins" />
-                            <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="authdbuser" id="authdbuser" type="text"  />
-                        </div>
-                        <!-- Database Password -->
-                        <div class="group-item ml-10" style="border-left: 10px solid transparent">
-                            <x-installer::label for="authdbpass" :value="__('installer::general.database_pass')" class="poppins" />
-                            <div class="break"></div>
-                            <x-installer::input class="input full text-white" name="authdbpass" id="authdbpass" type="text"  />
-                        </div>
-                    </div>
-                </div>
+                        @if ($realms->count() > 0 )
+
+                        @foreach($realms as $realm)
+                        <tr>
+                            <th>{{ $realm->realmname }}</th>
+                            <th>{{ $realm->realmportal }}</th>
+                            <th>{{ $realm->dbname }}</th>
+                            <th>{{ $realm->auth_database }}</th>
+                            <th>Edit</th>
+                        </tr>
+                        @endforeach
+
+                        @else 
+
+                        <tr>
+                            <th>Error</th>
+                        </tr>
+
+                        @endif
+
+                    @endif
+                </table>
 
                 <x-installer::button class="mt-25 full submit text-white poppins">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>

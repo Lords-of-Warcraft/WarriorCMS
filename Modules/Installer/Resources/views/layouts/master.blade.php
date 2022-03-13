@@ -21,7 +21,7 @@
         @show
 
         <h1 class="poppins headline" style="color:white;">WarriorCMS by DuelistRag3</h1>
-        <x-installer::app-logo />
+        <x-installer::app_logo />
 
         <div class="container">
             @yield('content')
