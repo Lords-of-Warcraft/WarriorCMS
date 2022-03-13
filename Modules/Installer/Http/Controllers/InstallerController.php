@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
 
 class InstallerController extends Controller
 {
@@ -159,6 +160,12 @@ class InstallerController extends Controller
        $this->writeconfig('database', 'connections.web.database', $request->webdbname);
        $this->writeconfig('database', 'connections.web.username', $request->webdbuser);
        $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
+
+       try {
+        Artisan::call('migrate');
+       } catch (Throwable $e) {
+           return back()->with('errors', 'Something went wrong');
+       }
 
        return redirect('/installer/server')->with('success', 'Web settings saved');
     }
