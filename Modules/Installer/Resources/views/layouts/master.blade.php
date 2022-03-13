@@ -20,7 +20,7 @@
         @section('index')
         @show
 
-        <h1 class="poppins headline" style="color:white;">WarriorCMS V.{{ config('warriorcms.version', 'Unknown Version') }} by DuelistRag3</h1>
+        <h1 class="poppins headline" style="color:white;">WarriorCMS by DuelistRag3</h1>
         <x-installer::app-logo />
 
         <div class="container">
@@ -30,5 +30,8 @@
             feather.replace()
         </script>
         @include('sweetalert::alert')
+        <footer class="text-white poppins">
+            V.{{ config('warriorcms.version', 'Unknown Version') }}
+        </footer>
     </body>
 </html>
