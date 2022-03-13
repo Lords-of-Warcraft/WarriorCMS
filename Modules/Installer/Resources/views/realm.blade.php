@@ -30,7 +30,7 @@
 
                         @if ($connected == false)
 
-                            <th>Error</th>
+                            <option disabled>No auth db entrys</option>
 
                             @else
 
@@ -42,7 +42,7 @@
 
                                 @else 
 
-                                <th>Kein</th>
+                                <option disabled>No auth db entrys</option>
 
                                 @endif
 

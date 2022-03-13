@@ -25,6 +25,14 @@ return [
     'addauth'       => 'Add auth',
     'authdb'        => 'Auth database',
 
+    'masteruser'    => 'Create the master user here, it will have security level 3 automaticaly.',
+    'masteruser2'   => 'By pressing the save button, you complete the installation.',
+    
+    'username'      => 'Username',
+    'mail'          => 'E-Mail',
+    'pw'            => 'Password',
+    'repa'          => 'Repeat Password',
+
     'warning'       => 'Warning',
     'conn_fail'     => 'Web database connection is not established',
     'conn_success'  => 'Web database connection established',

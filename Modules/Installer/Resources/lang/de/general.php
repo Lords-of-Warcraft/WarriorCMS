@@ -24,6 +24,14 @@ return [
 
     'addauth'       => 'Auth hinzufügen',
     'authdb'        => 'Auth database',
+
+    'masteruser'    => 'Erstelle den master user hier, er wird automatisch auf security level 3 gesetzt.',
+    'masteruser2'   => 'Mit dem drücken auf den Speichern knopf schließt du die Installation ab',
+    
+    'username'      => 'Benutzername',
+    'mail'          => 'E-Mail',
+    'pw'            => 'Passwort',
+    'repa'          => 'Passwort wiederholen',
     
     'warning'       => 'Warnung',
     'conn_fail'     => 'Web Datenbank verbindung nicht erfolgreich',
