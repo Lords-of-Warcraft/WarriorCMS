@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class V0_1CreateRealmTable extends Migration
+class CreateRealmTable extends Migration
 {
     /**
      * Run the migrations.
