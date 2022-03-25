@@ -114,6 +114,9 @@
                 <i class="" style="margin-right: 5px" data-feather="save"></i>
                 </x-installer::button>
             </form>
+            <x-installer::button class="mt-25 half submit text-white poppins mb-4" onclick="location.href = '/installer/web'">
+            Back
+            </x-installer::button>
         </div>
     </div>
 @endsection

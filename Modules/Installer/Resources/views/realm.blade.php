@@ -92,6 +92,9 @@
                 <span class="poppins text-uppercase text-bold">{{ __('installer::general.add') }}</span>
                 </x-installer::button>
             </form>
+            <x-installer::button class="mt-25 half submit text-white poppins mb-4" onclick="location.href = '/installer/server'">
+            Back
+            </x-installer::button>
         </div>
     </div>
 @endsection
