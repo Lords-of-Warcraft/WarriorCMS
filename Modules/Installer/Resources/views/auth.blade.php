@@ -49,11 +49,26 @@
                     </div>
                     <x-installer::label for="authtype" :value="__('installer::general.authtype')" class="poppins mt-10" />
                     <div class="break"></div>
-                    <div class="select-wrapper">
+                    <div class="select-wrapper mb-10">
                         <select class="select text-white full" name="authtype" id="authtype">
                             <option class="text-black" value="bnet">Battlenet</option>
-                            <option class="text-black" value="hex"></option>
-                            <option class="text-black" value="srp6"></option>
+                            <option class="text-black" value="hex">Hex</option>
+                            <option class="text-black" value="srp6">SRP6</option>
+                        </select>
+                    </div>
+                    <x-installer::label for="exp" :value="__('installer::general.expansion')" class="poppins mt-10" />
+                    <div class="break"></div>
+                    <div class="select-wrapper mb-10">
+                        <select class="select text-white full" name="exp" id="exp">
+                            <option class="text-black" value=0>Classic</option>
+                            <option class="text-black" value=1>The Burning Crusade (TBC)</option>
+                            <option class="text-black" value=2>Wrath of the Lichking (WOTLK)</option>
+                            <option class="text-black" value=3>Cataclysm</option>
+                            <option class="text-black" value=4>Mist of Pandaria (MOP)</option>
+                            <option class="text-black" value=5>Warlords of Draenor (WOD)</option>
+                            <option class="text-black" value=6>Legion</option>
+                            <option class="text-black" value=7>Battle for Azeroth (BFA)</option>
+                            <option class="text-black" value=8>Shadowlands</option>
                         </select>
                     </div>
                 </div>

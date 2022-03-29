@@ -2,17 +2,25 @@
 
 namespace Modules\Installer\Http\Controllers;
 
+use App\Models\UserModel;
+use App\Models\GeneralModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
-use App\Models\UserModel;
 use Illuminate\Support\Facades\Schema;
 
 class InstallerController extends Controller
 {
+    protected $connected;
+
+    public function __construct()
+    {
+        $connected = GeneralModel::testconnection();
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -28,42 +36,7 @@ class InstallerController extends Controller
      */
     public function server()
     {
-        if ($this->testconnection() == true) {
-            $connected = true;
-        } else {
-            $connected = false;
-        }
-        
-        $realms = $this->getallrealms();
-
-        $auths = $this->getallauth();
-
-        return view('installer::server', ['connected' => $connected, 'realms' => $realms, 'auths' => $auths]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function testconnection()
-    {
-        $config = config('database.connections.web.host');
-
-        if ($config == 'placeholder') {
-            return false;
-        } 
-        
-        try {
-            DB::connection('web');
-
-            if (!Schema::hasTable('realms') or !Schema::hasTable('auth')) {
-                return false;
-            }
-
-            return true;
-        } catch (Throwable $e) {
-            return false;
-        }
+        return view('installer::server', ['connected' => $this->connected, 'realms' => GeneralModel::getallrealms(), 'auths' => GeneralModel::getallauth()]);
     }
 
     /**
@@ -72,15 +45,7 @@ class InstallerController extends Controller
      */
     public function realm()
     {
-        if ($this->testconnection() == true) {
-            $connected = true;
-        } else {
-            $connected = false;
-        }
-
-        $auths = $this->getallauth();
-
-        return view('installer::realm', ['connected' => $connected, 'auths' => $auths]);
+        return view('installer::realm', ['connected' => $this->connected, GeneralModel::getallauth()]);
     }
 
     /**
@@ -221,16 +186,16 @@ class InstallerController extends Controller
             'dbport' => 'required',
             'dbname' => 'required',
             'dbuser' => 'required',
-            'dbpass' => 'required'
+            'dbpass' => 'required',
+            'authtype' => 'required',
+            'exp'    => 'required'
         ]);
 
         if ($validator->fails()) {
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        $connected = $this->testconnection();
-
-       if ($connected == false) {
+       if ($this->connected == false) {
            return back()->with('warning', __('installer::general.conn_fail'));
        }
 
@@ -241,6 +206,8 @@ class InstallerController extends Controller
                'dbname' => $request->dbname,
                'dbuser' => $request->dbuser,
                'dbpass' => $request->dbpass,
+               'auth_type'  => $request->authtype,
+               'exp'    => $request->exp,
            ]);
 
            return redirect('/installer/server/')->with('success', 'Auth database added');
@@ -254,28 +221,6 @@ class InstallerController extends Controller
     public function removeauth(Request $request)
     {
         DB::table('auth')->where('id', $request->id)->delete();
-    }
-
-    public function getallrealms()
-    {
-        $connected = $this->testconnection();
-
-        if ($connected == false) {
-            return false;
-        }
-
-        return DB::connection('web')->table('realms')->get();
-    }
-
-    public function getallauth()
-    {
-        $connected = $this->testconnection();
-
-        if ($connected == false) {
-            return false;
-        }
-
-        return DB::connection('web')->table('auth')->get();
     }
 
     public function addrealm(Request $request)
@@ -295,9 +240,7 @@ class InstallerController extends Controller
            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
        }
 
-       $connected = $this->testconnection();
-
-       if ($connected == false) {
+       if ($this->connected == false) {
            return back()->with('warning', __('installer::general.conn_fail'));
        }
 
@@ -331,14 +274,14 @@ class InstallerController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required|min:3',
             'e-mail' => 'required|email',
-            'password' => 'required||confirmed|min:6',
+            'password' => 'required|confirmed|min:6',
        ]);
 
-       if ($validator->fails()) {
-        return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        UserModel::RegisterUser();
+        UserModel::RegisterUser($request->username, $request->email, $request->password, 3);
 
     }
 }

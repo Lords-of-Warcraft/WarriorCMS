@@ -24,7 +24,8 @@ return [
 
     'addauth'       => 'Add auth',
     'authdb'        => 'Auth database',
-    'authtype'        => 'Auth Type',
+    'authtype'      => 'Auth Type',
+    'expansion'     => 'Expansion',
 
     'masteruser'    => 'Create the master user here, it will have security level 3 automaticaly.',
     'masteruser2'   => 'By pressing the save button, you complete the installation.',

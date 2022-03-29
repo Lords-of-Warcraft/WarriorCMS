@@ -2,19 +2,65 @@
 
 namespace App\Models;
 
+use App\Models\GeneralModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class UserModel extends Model
 {
     use HasFactory;
 
-	public static function RegisterUser()
+	public static function RegisterUser($username, $email, $password, $securitylevel)
 	{
-		return redirect('/installer/server/')->with('success', 'Realm added');
+		$allauth = GeneralModel::getallauth();
+
+		foreach ($allauth as $auth) {
+			Config::set("database.connections.auth", [
+				'host'		=> $auth->dbhost,
+				'port'		=> $auth->dbport,
+				'database'	=> $auth->dbname,
+				'username'	=> $auth->dbuser,
+				'password'	=> $auth->dbpass,
+			]);
+
+			DB::purge('auth');
+
+			DB::setDefaultConnection('auth');
+
+			if ($auth->auth_type == 'srp6') {
+				$salt = random_bytes(32);
+
+				if (Schema::hasColumn('account', 'session_key')) {
+					$insert = [
+						'username' 	=> $username,
+						'salt'		=> $salt,
+						'verifier'	=> self::hash($email, $password, 'srp6', $salt),
+						'email'		=> $email,
+						'expansion'	=> $auth->exp,
+						'session_key'	=> null
+					];
+				} else {
+					$insert = [
+						'username' 	=> $username,
+						'salt'		=> $salt,
+						'verifier'	=> self::hash($email, $password, 'srp6', $salt),
+						'email'		=> $email,
+						'expansion'	=> $auth->exp,
+						'session_key_auth'	=> null,
+						'session_key_bnet'	=> null
+					];
+				}
+
+				DB::table('account')->insert($insert);
+			}
+
+			DB::purge('auth');
+		}
 	}
 
-    public function hash($email, $password, $type)
+    public function hash($email, $password, $type, $salt)
 	{
         switch($type)
         {

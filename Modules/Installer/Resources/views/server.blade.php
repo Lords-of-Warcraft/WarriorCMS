@@ -9,11 +9,11 @@
             <div class="break"></div>
             <p class="poppins text-white">{{ __('installer::general.topdesc') }}</p>
             <div class="break"></div>
-            <form method="POST" action="javascript:void(0);" class="mt-25" onsubmit="save(2)">
+            <form method="POST" action="javascript:void(0);" class="mt-25">
                 @csrf
                 @if ($connected == false)
 
-                <div class="full poppins text-white text-center message-box warning mb-4">
+                <div class="full poppins text-white text-center message-box warning mb-10">
                 <span class="text-uppercase text-bold">{{ __('installer::general.warning')}}! </span>{{ __('installer::general.conn_fail')}}
                 </div>
 
@@ -21,7 +21,7 @@
 
                 @if ($connected == true)
 
-                <div class="full poppins text-white text-center message-box success mb-4">
+                <div class="full poppins text-white text-center message-box success mb-10">
                 <span>{{ __('installer::general.conn_success')}}</span>
                 </div>
 
@@ -53,7 +53,7 @@
                                 <th>{{ $auth->id }}</th>
                                 <th>{{ $auth->dbhost }}</th>
                                 <th>{{ $auth->dbname }}</th>
-                                <th><form><button></button></form></th>
+                                <th><form method="POST" action="/installer/auth/remove"><button>Delete</button></form></th>
                             </tr>
                             @endforeach
 
@@ -95,7 +95,7 @@
                             <th>{{ $realm->realmportal }}</th>
                             <th>{{ $realm->dbname }}</th>
                             <th>{{ $realm->auth_database }}</th>
-                            <th>Edit</th>
+                            <th><form method="POST" action="/installer/realm/remove"><button>Delete</button></form></th>
                         </tr>
                         @endforeach
 
@@ -110,7 +110,7 @@
                     @endif
                 </table>
 
-                <x-installer::button class="mt-25 full submit text-white poppins">
+                <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/user'">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>
                 </x-installer::button>
             </form>

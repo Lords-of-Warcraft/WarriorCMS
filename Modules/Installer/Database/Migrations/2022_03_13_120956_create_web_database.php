@@ -21,6 +21,7 @@ class CreateWebDatabase extends Migration
             $table->string('dbuser');
             $table->string('dbpass');
             $table->string('auth_type');
+            $table->integer('exp');
             $table->timestamps();
         });
 
