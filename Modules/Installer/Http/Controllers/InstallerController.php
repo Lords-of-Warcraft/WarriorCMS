@@ -219,7 +219,7 @@ class InstallerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|min:3',
-            'e-mail' => 'required|email',
+            'e_mail' => 'required|email',
             'password' => 'required|confirmed|min:6',
        ]);
 
@@ -227,7 +227,7 @@ class InstallerController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        $this->UserController->RegisterUser($request->username, $request->email, $request->password, 3);
+        $this->UserController->RegisterUser($request->username, $request->e_mail, $request->password, 3);
 
     }
 }

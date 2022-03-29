@@ -20,9 +20,9 @@
                 </div>
 
                 <div class="mt-4">
-                    <x-installer::label for="e-mail" :value="__('installer::general.mail')" class="poppins" />
+                    <x-installer::label for="e_mail" :value="__('installer::general.mail')" class="poppins" />
                     <div class="break"></div>
-                    <x-installer::input class="input full text-white" name="e-mail" id="e-mail" type="email" />
+                    <x-installer::input class="input full text-white" name="e_mail" id="e_mail" type="email" />
                 </div>
 
                 <div class="mt-4">

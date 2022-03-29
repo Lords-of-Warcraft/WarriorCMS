@@ -39,6 +39,7 @@ class UserController extends Controller
 						'salt'		=> $salt,
 						'verifier'	=> self::hash($email, $password, 'srp6', $salt),
 						'email'		=> $email,
+                        'reg_mail'  => $email,
 						'expansion'	=> $auth->exp,
 						'session_key'	=> null
 					]);
@@ -48,6 +49,7 @@ class UserController extends Controller
                         'salt'		=> $salt,
                         'verifier'	=> self::hash($email, $password, 'srp6', $salt),
                         'email'		=> $email,
+                        'reg_mail'  => $email,
                         'expansion'	=> $auth->exp,
                         'session_key_auth'	=> null,
                         'session_key_bnet'	=> null
