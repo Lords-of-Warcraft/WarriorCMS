@@ -9,7 +9,7 @@
             <div class="break"></div>
             <p class="poppins text-white">{{ __('installer::general.topdesc') }}</p>
             <div class="break"></div>
-            <form method="POST" action="javascript:void(0);" class="mt-25">
+            <div class="fakeform">
                 @csrf
                 @if ($connected == false)
 
@@ -53,13 +53,19 @@
                                 <th>{{ $auth->id }}</th>
                                 <th>{{ $auth->dbhost }}</th>
                                 <th>{{ $auth->dbname }}</th>
-                                <th><form method="POST" action="/installer/auth/remove"><button>Delete</button></form></th>
+                                <th>
+                                    <form method=POST action=server/auth/remove>
+                                    @csrf
+                                        <input type=hidden name=id value={{$auth->id}}>
+                                        <button type=submit>Delete</button>
+                                    </form>
+                                </th>
                             </tr>
                             @endforeach
 
                             @else 
                             <tr>
-                                <th>Error</th>
+                                <th>No entries</th>
                             </tr>
 
                             @endif
@@ -95,14 +101,20 @@
                             <th>{{ $realm->realmportal }}</th>
                             <th>{{ $realm->dbname }}</th>
                             <th>{{ $realm->auth_database }}</th>
-                            <th><form method="POST" action="/installer/realm/remove"><button>Delete</button></form></th>
+                            <th>
+                                <form method=POST action=server/realm/remove>
+                                @csrf
+                                    <input type=hidden name=id value={{$realm->id}}>
+                                    <button>Delete</button>
+                                </form>
+                            </th>
                         </tr>
                         @endforeach
 
                         @else 
 
                         <tr>
-                            <th>Error</th>
+                            <th>No entries</th>
                         </tr>
 
                         @endif
@@ -113,7 +125,7 @@
                 <x-installer::button class="mt-25 full submit text-white poppins" onclick="javascript:location.href='/installer/user'">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>
                 </x-installer::button>
-            </form>
+            </div>
             <x-installer::button class="mt-25 half submit text-white poppins mb-4" onclick="location.href = '/installer/web'">
             Back
             </x-installer::button>

@@ -76,6 +76,10 @@ form {
   width: 60%;
 }
 
+.fakeform {
+  width: 60%;
+}
+
 .input {
   background-color: transparent;
   padding: 10px;

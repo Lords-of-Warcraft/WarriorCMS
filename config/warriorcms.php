@@ -1,9 +1,6 @@
-<?php
-
-return [
-
-    // Automated Values, do not set until you do know what you doing
-    'website_name' => 'WarriorCMS',
-    'installstatus' => 0,
-    'version' => '0.1.7',
-];
+<?php return array (
+  'website_name' => 'WarriorCMS',
+  'installstatus' => 0,
+  'version' => '0.1.8',
+);
+);

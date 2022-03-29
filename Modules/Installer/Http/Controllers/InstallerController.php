@@ -2,23 +2,25 @@
 
 namespace Modules\Installer\Http\Controllers;
 
-use App\Models\UserModel;
 use App\Models\GeneralModel;
+use App\Http\Controllers\UserController;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 
 class InstallerController extends Controller
 {
-    protected $connected;
+    private $connected;
 
-    public function __construct()
+    public function __construct(UserController $UserController)
     {
-        $connected = GeneralModel::testconnection();
+        $this->connected = GeneralModel::testconnection();
+        $this->UserController = $UserController;
     }
 
     /**
@@ -45,7 +47,7 @@ class InstallerController extends Controller
      */
     public function realm()
     {
-        return view('installer::realm', ['connected' => $this->connected, GeneralModel::getallauth()]);
+        return view('installer::realm', ['connected' => $this->connected, 'auths' => GeneralModel::getallauth()]);
     }
 
     /**
@@ -64,66 +66,6 @@ class InstallerController extends Controller
     public function user()
     {
         return view('installer::createuser');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('installer::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('installer::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('installer::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /**
@@ -218,9 +160,11 @@ class InstallerController extends Controller
        }
     }
 
-    public function removeauth(Request $request)
+    public function authremove(Request $request)
     {
         DB::table('auth')->where('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', 'Auth database removed');
     }
 
     public function addrealm(Request $request)
@@ -264,9 +208,11 @@ class InstallerController extends Controller
        }
     }
 
-    public function removerealm(Request $request)
+    public function realmremove(Request $request)
     {
         DB::table('realms')->where('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', 'Realm removed');
     }
 
     public function finish(Request $request)
@@ -281,7 +227,7 @@ class InstallerController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        UserModel::RegisterUser($request->username, $request->email, $request->password, 3);
+        $this->UserController->RegisterUser($request->username, $request->email, $request->password, 3);
 
     }
 }

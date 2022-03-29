@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
 use App\Models\GeneralModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class UserModel extends Model
+class UserController extends Controller
 {
-    use HasFactory;
-
-	public static function RegisterUser($username, $email, $password, $securitylevel)
+    public function RegisterUser($username, $email, $password, $securitylevel)
 	{
 		$allauth = GeneralModel::getallauth();
 
 		foreach ($allauth as $auth) {
 			Config::set("database.connections.auth", [
+				'driver'	=> 'mysql',
 				'host'		=> $auth->dbhost,
 				'port'		=> $auth->dbport,
 				'database'	=> $auth->dbname,
 				'username'	=> $auth->dbuser,
 				'password'	=> $auth->dbpass,
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
 			]);
 
 			DB::purge('auth');
@@ -33,49 +34,49 @@ class UserModel extends Model
 				$salt = random_bytes(32);
 
 				if (Schema::hasColumn('account', 'session_key')) {
-					$insert = [
-						'username' 	=> $username,
+					DB::table('account')->insert([
+						'username'	=> $username,
 						'salt'		=> $salt,
 						'verifier'	=> self::hash($email, $password, 'srp6', $salt),
 						'email'		=> $email,
 						'expansion'	=> $auth->exp,
 						'session_key'	=> null
-					];
+					]);
 				} else {
-					$insert = [
-						'username' 	=> $username,
-						'salt'		=> $salt,
-						'verifier'	=> self::hash($email, $password, 'srp6', $salt),
-						'email'		=> $email,
-						'expansion'	=> $auth->exp,
-						'session_key_auth'	=> null,
-						'session_key_bnet'	=> null
-					];
+                    DB::table('account')->insert([
+                        'username'	=> $username,
+                        'salt'		=> $salt,
+                        'verifier'	=> self::hash($email, $password, 'srp6', $salt),
+                        'email'		=> $email,
+                        'expansion'	=> $auth->exp,
+                        'session_key_auth'	=> null,
+                        'session_key_bnet'	=> null
+                    ]);
 				}
-
-				DB::table('account')->insert($insert);
 			}
 
 			DB::purge('auth');
 		}
+
+		return true;
 	}
 
-    public function hash($email, $password, $type, $salt)
+    public static function hash($email, $password, $type, $salt)
 	{
         switch($type)
         {
             case 'bnet':
-				return strtoupper(bin2hex(strrev(hex2bin(strtoupper(hash('sha256', strtoupper(hash('sha256', strtoupper($username)) . ':' . strtoupper($password))))))));
+				return strtoupper(bin2hex(strrev(hex2bin(strtoupper(hash('sha256', strtoupper(hash('sha256', strtoupper($email)) . ':' . strtoupper($password))))))));
 				break;
 			case 'hex':
-				$client = new UserClient($username, $salt);
+				$client = new UserClient($email, $salt);
 				return strtoupper($client->generateVerifier($password));
 			case 'srp6':
 				// Constants
 				$g = gmp_init(7);
 				$N = gmp_init('894B645E89E1535BBDAD5B8B290650530801B18EBFBF5E8FAB3C82872A3E9BB7', 16);
 				// Calculate first hash
-				$h1 = sha1(strtoupper($username.':'.$password), TRUE);
+				$h1 = sha1(strtoupper($email.':'.$password), TRUE);
 				// Calculate second hash
 				$h2 = sha1($salt.$h1, TRUE);
 				// Convert to integer (little-endian)
@@ -89,7 +90,7 @@ class UserModel extends Model
 				return $verifier;
 				break;
 			default:
-				return strtoupper(sha1(strtoupper($username) . ':' . strtoupper($password)));
+				return strtoupper(sha1(strtoupper($email) . ':' . strtoupper($password)));
 				break;
         }
     }

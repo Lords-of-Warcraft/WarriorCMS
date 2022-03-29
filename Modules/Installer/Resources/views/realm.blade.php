@@ -30,7 +30,7 @@
 
                         @if ($connected == false)
 
-                            <option disabled>No auth db entrys</option>
+                            <option disabled>No db connecton</option>
 
                             @else
 

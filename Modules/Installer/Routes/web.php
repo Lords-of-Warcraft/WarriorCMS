@@ -27,9 +27,13 @@ Route::prefix('installer')->group(function() {
 
         Route::post('/server/addrealm', 'InstallerController@addrealm');
 
+        Route::post('/server/realm/remove', 'InstallerController@realmremove');
+
         Route::post('/webinstall', 'InstallerController@installweb');
 
         Route::post('/server/addauth', 'InstallerController@addauthdb');
+
+        Route::post('/server/auth/remove', 'InstallerController@authremove');
 
         Route::post('/server/finish', 'InstallerController@finish');
     });
