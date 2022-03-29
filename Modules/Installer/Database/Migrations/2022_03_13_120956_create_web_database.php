@@ -15,12 +15,12 @@ class CreateWebDatabase extends Migration
     {
         Schema::create('auth', function (Blueprint $table) {
             $table->id();
-            $table->integer('auth_type');
             $table->string('dbhost');
             $table->string('dbport');
             $table->string('dbname');
             $table->string('dbuser');
             $table->string('dbpass');
+            $table->string('auth_type');
             $table->timestamps();
         });
 

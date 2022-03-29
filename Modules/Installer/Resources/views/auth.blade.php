@@ -33,7 +33,7 @@
                             <div class="break"></div>
                             <x-installer::input class="input full text-white" name="dbname" id="dbname" type="text" placeholder="warriorcms" />
                     </div>
-                    <div class="group mt-4">
+                    <div class="group mt-4 mb-4">
                         <!-- Database Username -->
                         <div class="group-item">
                             <x-installer::label for="dbuser" :value="__('installer::general.database_user')" class="poppins" />
@@ -46,6 +46,15 @@
                             <div class="break"></div>
                             <x-installer::input class="input full text-white" name="dbpass" id="dbpass" type="password" placeholder="1234" />
                         </div>
+                    </div>
+                    <x-installer::label for="authtype" :value="__('installer::general.authtype')" class="poppins mt-10" />
+                    <div class="break"></div>
+                    <div class="select-wrapper">
+                        <select class="select text-white full" name="authtype" id="authtype">
+                            <option class="text-black" value="bnet">Battlenet</option>
+                            <option class="text-black" value="hex"></option>
+                            <option class="text-black" value="srp6"></option>
+                        </select>
                     </div>
                 </div>
                 <x-installer::button class="mt-25 full submit text-white mb-4">

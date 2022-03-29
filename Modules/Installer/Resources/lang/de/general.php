@@ -24,6 +24,7 @@ return [
 
     'addauth'       => 'Auth hinzufügen',
     'authdb'        => 'Auth database',
+    'authtype'        => 'Auth Type',
 
     'masteruser'    => 'Erstelle den master user hier, er wird automatisch auf security level 3 gesetzt.',
     'masteruser2'   => 'Mit dem drücken auf den Speichern knopf schließt du die Installation ab',

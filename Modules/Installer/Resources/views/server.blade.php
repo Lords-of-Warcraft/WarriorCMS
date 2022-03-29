@@ -53,7 +53,7 @@
                                 <th>{{ $auth->id }}</th>
                                 <th>{{ $auth->dbhost }}</th>
                                 <th>{{ $auth->dbname }}</th>
-                                <th>Edit</th>
+                                <th><form><button></button></form></th>
                             </tr>
                             @endforeach
 

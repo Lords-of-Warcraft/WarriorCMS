@@ -98,14 +98,41 @@ form {
 .select {
   background-color: transparent;
   padding: 10px;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
   border-bottom: 1px solid var(--clr-primary);
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+.select-wrapper {
+  /* ... */
+  position: relative;
+}
+
+.select-wrapper::after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.select-wrapper::before {
+  /* ... */
+  pointer-events: none;
 }
 
 .select:focus {
   border: none;
+  border-bottom: 1px solid var(--clr-primary);
   outline: none;
 }
 
@@ -219,6 +246,10 @@ footer {
 
 .mb-4 {
   margin-bottom: 4px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
 }
 
 .ml-10 {

@@ -10,7 +10,7 @@
             <p class="poppins text-white">{{ __('installer::general.masteruser') }}</p><br>
             <div class="break"></div>
             <p class="poppins text-white">{{ __('installer::general.masteruser2') }}</p>
-            <form method="POST" action="/installer/server/adduser" class="mt-25">
+            <form method="POST" action="/installer/server/finish" class="mt-25">
                 @csrf
 
                 <div class="mt-4">
@@ -32,9 +32,9 @@
                 </div>
 
                 <div class="mt-4">
-                    <x-installer::label for="repa" :value="__('installer::general.repa')" class="poppins" />
+                    <x-installer::label for="password_confirmation" :value="__('installer::general.repa')" class="poppins" />
                     <div class="break"></div>
-                    <x-installer::input class="input full text-white" name="repa" id="repa" type="password" />
+                    <x-installer::input class="input full text-white" name="password_confirmation" id="password_confirmation" type="password" />
                 </div>
                 <x-installer::button class="mt-25 full submit text-white poppins">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>

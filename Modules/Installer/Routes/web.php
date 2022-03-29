@@ -30,5 +30,7 @@ Route::prefix('installer')->group(function() {
         Route::post('/webinstall', 'InstallerController@installweb');
 
         Route::post('/server/addauth', 'InstallerController@addauthdb');
+
+        Route::post('/server/finish', 'InstallerController@finish');
     });
 });

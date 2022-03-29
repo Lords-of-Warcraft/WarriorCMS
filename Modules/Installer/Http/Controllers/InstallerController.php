@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\UserModel;
+use Illuminate\Support\Facades\Schema;
 
 class InstallerController extends Controller
 {
@@ -52,7 +54,12 @@ class InstallerController extends Controller
         } 
         
         try {
-            DB::connection('web')->table('realms')->get();
+            DB::connection('web');
+
+            if (!Schema::hasTable('realms') or !Schema::hasTable('auth')) {
+                return false;
+            }
+
             return true;
         } catch (Throwable $e) {
             return false;
@@ -244,6 +251,11 @@ class InstallerController extends Controller
        }
     }
 
+    public function removeauth(Request $request)
+    {
+        DB::table('auth')->where('id', $request->id)->delete();
+    }
+
     public function getallrealms()
     {
         $connected = $this->testconnection();
@@ -307,5 +319,26 @@ class InstallerController extends Controller
 
            return false;
        }
+    }
+
+    public function removerealm(Request $request)
+    {
+        DB::table('realms')->where('id', $request->id)->delete();
+    }
+
+    public function finish(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|min:3',
+            'e-mail' => 'required|email',
+            'password' => 'required||confirmed|min:6',
+       ]);
+
+       if ($validator->fails()) {
+        return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+        UserModel::RegisterUser();
+
     }
 }
