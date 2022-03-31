@@ -38,7 +38,7 @@ class InstallerController extends Controller
      */
     public function server()
     {
-        return view('installer::server', ['connected' => $this->connected, 'realms' => GeneralModel::getallrealms(), 'auths' => GeneralModel::getallauth()]);
+        return view('installer::server', ['connected' => $this->connected, 'realms' => GeneralModel::getallrealms()->get(), 'auths' => GeneralModel::getallauth()->get()]);
     }
 
     /**
@@ -47,7 +47,7 @@ class InstallerController extends Controller
      */
     public function realm()
     {
-        return view('installer::realm', ['connected' => $this->connected, 'auths' => GeneralModel::getallauth()]);
+        return view('installer::realm', ['connected' => $this->connected, 'auths' => GeneralModel::getallauth()->get()]);
     }
 
     /**
@@ -228,6 +228,10 @@ class InstallerController extends Controller
         }
 
         $this->UserController->RegisterUser($request->username, $request->e_mail, $request->password, 3);
+
+        $this->writeconfig('warriorcms', 'installstatus', 1);
+
+        return redirect('/home')->with('success', 'Installation was successfull');
 
     }
 }

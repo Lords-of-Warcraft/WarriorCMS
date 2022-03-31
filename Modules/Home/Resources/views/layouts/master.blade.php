@@ -15,5 +15,6 @@
 
         {{-- Laravel Mix - JS File --}}
         {{-- <script src="{{ mix('js/home.js') }}"></script> --}}
+        @include('sweetalert::alert')
     </body>
 </html>

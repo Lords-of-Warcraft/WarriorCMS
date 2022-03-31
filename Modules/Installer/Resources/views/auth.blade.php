@@ -54,6 +54,7 @@
                             <option class="text-black" value="bnet">Battlenet</option>
                             <option class="text-black" value="hex">Hex</option>
                             <option class="text-black" value="srp6">SRP6</option>
+                            <option class="text-black" value="old">Old TrinityCore</option>
                         </select>
                     </div>
                     <x-installer::label for="exp" :value="__('installer::general.expansion')" class="poppins mt-10" />
