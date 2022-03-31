@@ -167,6 +167,7 @@ return [
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Vluzrmos\LanguageDetector\Providers\LanguageDetectorServiceProvider::class,
+        Shipu\Themevel\Providers\ThemevelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -232,6 +233,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Theme' => Shipu\Themevel\Facades\Theme::class,
 
     ],
 
