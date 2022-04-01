@@ -38,7 +38,7 @@ class InstallerController extends Controller
      */
     public function server()
     {
-        return view('installer::server', ['connected' => $this->connected, 'realms' => GeneralModel::getallrealms()->get(), 'auths' => GeneralModel::getallauth()->get()]);
+        return view('installer::server', ['connected' => $this->connected, 'realms' => GeneralModel::getallrealms(), 'auths' => GeneralModel::getallauth()]);
     }
 
     /**
@@ -69,20 +69,6 @@ class InstallerController extends Controller
     }
 
     /**
-     * Write to config files
-     * @param $file
-     * @param $note
-     * @param $value
-     */
-
-     public function writeconfig($file, $note, $value)
-     {
-        config([$file.'.'.$note => $value]);
-        $text = '<?php return ' . var_export(config($file), true) . ';';
-        file_put_contents(config_path($file.'.php'), $text);
-     }
-
-    /**
      * Execute the installation for the webinstaller
      * @param Request $request
      */
@@ -104,14 +90,14 @@ class InstallerController extends Controller
            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
        }
 
-       $this->writeconfig('app', 'name', $request->webname);
-       $this->writeconfig('warriorcms', 'website_name', $request->webname);
-       $this->writeconfig('app', 'url', $request->weburl);
-       $this->writeconfig('database', 'connections.web.host', $request->webdbhostname);
-       $this->writeconfig('database', 'connections.web.port', $request->webdbport);
-       $this->writeconfig('database', 'connections.web.database', $request->webdbname);
-       $this->writeconfig('database', 'connections.web.username', $request->webdbuser);
-       $this->writeconfig('database', 'connections.web.password', $request->webdbpw);
+       Config::write('app.name', $request->webname);
+       Config::write('warriorcms.website_name', $request->webname);
+       Config::write('app.url', $request->weburl);
+       Config::write('database.connections.web.host', $request->webdbhostname);
+       Config::write('database.connections.web.port', $request->webdbport);
+       Config::write('database.connections.web.database', $request->webdbname);
+       Config::write('database.connections.web.username', $request->webdbuser);
+       Config::write('database.connections.web.password', $request->webdbpw);
 
        try {
         Artisan::call('migrate --force');
@@ -229,7 +215,7 @@ class InstallerController extends Controller
 
         $this->UserController->RegisterUser($request->username, $request->e_mail, $request->password, 3);
 
-        $this->writeconfig('warriorcms', 'installstatus', 1);
+        Config::write('warriorcms.installstatus', 1);
 
         return redirect('/home')->with('success', 'Installation was successfull');
 

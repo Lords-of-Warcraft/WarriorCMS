@@ -168,6 +168,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Vluzrmos\LanguageDetector\Providers\LanguageDetectorServiceProvider::class,
         Shipu\Themevel\Providers\ThemevelServiceProvider::class,
+        DuelistRag3\ConfigWriter\Providers\ConfigWriterServiceProvider::class,
 
         /*
          * Application Service Providers...
