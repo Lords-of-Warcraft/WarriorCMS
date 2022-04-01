@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function RegisterUser($username, $email, $password, $securitylevel = 0)
 	{
-		$allauth = GeneralModel::getallauth()->get();
+		$allauth = GeneralModel::getallauth();
 
 		foreach ($allauth as $auth) {
 			GeneralModel::buildDynamicDBConnection('auth', $auth);

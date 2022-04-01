@@ -39,7 +39,7 @@ class GeneralModel extends Model
             return false;
         }
 
-        return DB::connection('web')->table('realms');
+        return DB::connection('web')->table('realms')->get();
     }
 
     public static function getallauth()
@@ -50,7 +50,7 @@ class GeneralModel extends Model
             return false;
         }
 
-        return DB::connection('web')->table('auth');
+        return DB::connection('web')->table('auth')->get();
     }
 
     public static function buildDynamicDBConnection($connname, $data)
