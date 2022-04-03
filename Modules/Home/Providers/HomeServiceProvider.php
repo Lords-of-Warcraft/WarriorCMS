@@ -4,6 +4,7 @@ namespace Modules\Home\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Shipu\Themevel\Facades\Theme;
 
 class HomeServiceProvider extends ServiceProvider
 {
@@ -62,6 +63,8 @@ class HomeServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
+        $themePath = base_path('Themes/' . Theme::current() . '/views/modules/' . $this->moduleNameLower);
+
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, 'Resources/views');
@@ -70,7 +73,7 @@ class HomeServiceProvider extends ServiceProvider
             $sourcePath => $viewPath
         ], ['views', $this->moduleNameLower . '-module-views']);
 
-        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+        $this->loadViewsFrom(array_merge([$themePath], $this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
 
     /**

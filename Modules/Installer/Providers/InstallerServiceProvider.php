@@ -4,6 +4,7 @@ namespace Modules\Installer\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Shipu\Themevel\Facades\Theme;
 
 class InstallerServiceProvider extends ServiceProvider
 {
@@ -63,6 +64,8 @@ class InstallerServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
+        $themePath = base_path('Themes/' . Theme::current() . '/views/modules/' . $this->moduleNameLower);
+
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, 'Resources/views');
@@ -71,7 +74,7 @@ class InstallerServiceProvider extends ServiceProvider
             $sourcePath => $viewPath
         ], ['views', $this->moduleNameLower . '-module-views']);
 
-        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+        $this->loadViewsFrom(array_merge([$themePath], $this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
 
     /**

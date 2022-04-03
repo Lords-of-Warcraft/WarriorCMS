@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('home')->group(function() {
-    Route::get('/', 'HomeController@index')->middleware('installstatus');
+Route::prefix('home')->middleware('installstatus')->group(function() {
+    Theme::set(Config('theme.active'));
+    Route::get('/', 'HomeController@index');
 });
