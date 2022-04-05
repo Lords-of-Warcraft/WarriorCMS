@@ -4,6 +4,7 @@ namespace $NAMESPACE$;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Shipu\Themevel\Facades\Theme;
 
 class $CLASS$ extends ServiceProvider
 {
@@ -62,6 +63,8 @@ class $CLASS$ extends ServiceProvider
      */
     public function registerViews()
     {
+        $themePath = base_path('Themes/' . Theme::current() . '/views/modules/' . $this->moduleNameLower);
+
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, '$PATH_VIEWS$');
@@ -70,7 +73,7 @@ class $CLASS$ extends ServiceProvider
             $sourcePath => $viewPath
         ], ['views', $this->moduleNameLower . '-module-views']);
 
-        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+        $this->loadViewsFrom(array_merge([$themePath], $this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
 
     /**

@@ -12,5 +12,6 @@
 */
 
 Route::prefix('$LOWER_NAME$')->group(function() {
+    Theme::set(Config('theme.active'));
     Route::get('/', '$STUDLY_NAME$Controller@index');
 });
