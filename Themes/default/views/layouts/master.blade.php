@@ -7,7 +7,7 @@
         <title>Module Home</title>
 
        {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/home.css') }}"> --}}
+       <link rel="stylesheet" href="{{ mix('css/home.css') }}">
 
     </head>
     <body>
