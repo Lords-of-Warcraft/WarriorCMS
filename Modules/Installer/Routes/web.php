@@ -12,6 +12,7 @@
 */
 
 Route::prefix('installer')->group(function() {
+    Theme::set('installer');
     Route::middleware(['status'])->group(function() {
         Route::get('/', 'InstallerController@web');
 

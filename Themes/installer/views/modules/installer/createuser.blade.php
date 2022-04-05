@@ -1,4 +1,4 @@
-@extends('installer::layouts.master')
+@extends('layouts.master')
 
 @section('title', 'User')
 
