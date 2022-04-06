@@ -1,0 +1,1 @@
+<img class="headimg" alt="Header" src="{{ themes('img/1542952.jpg'); }}">

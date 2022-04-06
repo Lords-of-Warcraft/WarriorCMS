@@ -63,6 +63,8 @@ class HomeServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
+        $layoutPath = base_path('Themes/'. Theme::current(). '/views');
+
         $themePath = base_path('Themes/' . Theme::current() . '/views/modules/' . $this->moduleNameLower);
 
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
@@ -73,7 +75,7 @@ class HomeServiceProvider extends ServiceProvider
             $sourcePath => $viewPath
         ], ['views', $this->moduleNameLower . '-module-views']);
 
-        $this->loadViewsFrom(array_merge([$themePath], $this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+        $this->loadViewsFrom(array_merge([$layoutPath], [$themePath], $this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
 
     /**
