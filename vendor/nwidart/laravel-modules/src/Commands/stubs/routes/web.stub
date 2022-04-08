@@ -11,7 +11,7 @@
 |
 */
 
-Route::prefix('$LOWER_NAME$')->group(function() {
+Route::prefix('$LOWER_NAME$')->middleware(['installstatus', 'theme:'.Config('theme.active')])->group(function() {
     Theme::set(Config('theme.active'));
     Route::get('/', '$STUDLY_NAME$Controller@index');
 });
