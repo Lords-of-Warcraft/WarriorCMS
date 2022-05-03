@@ -10,9 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         {{-- Laravel Mix - CSS File --}}
-        <link rel="stylesheet" href="{{ mix('css/installer.css') }}"> 
+        <link rel="stylesheet" href="{{ themes('css/installer.css') }}"> 
         {{-- Laravel Mix - JS File --}}
-        <script src="{{ mix('js/installer.js') }}"></script>
+        <script src="{{ themes('js/installer.js') }}"></script>
 
     </head>
     <body>
@@ -30,6 +30,12 @@
             feather.replace()
         </script>
         @include('sweetalert::alert')
+        <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+            new Crate({
+                server: '839421866229104641', // WarriorCMS
+                channel: '967461391873237082' // #support
+            })
+        </script>
         <footer class="text-white poppins">
             V.{{ config('warriorcms.version', 'Unknown Version') }}
         </footer>

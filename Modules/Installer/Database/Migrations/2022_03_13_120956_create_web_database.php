@@ -39,6 +39,27 @@ class CreateWebDatabase extends Migration
 
             $table->foreign('auth_database')->references('id')->on('auth');
         });
+
+        Schema::create('lang_strings', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('lang_code');
+            $table->string('content');
+            $table->timestamps();
+            $table->unique(['name', 'lang_code']);
+        });
+
+        Schema::create('profiles', function (Blueprint $table) {
+            $table->integer('id')->unique();
+            $table->string('name');
+            $table->integer('profile_image')->default(1);
+        });
+
+        Schema::create('profile_images', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -50,5 +71,7 @@ class CreateWebDatabase extends Migration
     {
         Schema::dropIfExists('realms');
         Schema::dropIfExists('auth');
+        Schema::dropIfExists('lang_strings');
+        Schema::dropIfExists('profiles');
     }
 }

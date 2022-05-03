@@ -127,7 +127,7 @@
                 </x-installer::button>
             </div>
             <x-installer::button class="mt-25 half submit text-white poppins mb-4" onclick="location.href = '/installer/web'">
-            Back
+            {{ __('installer::general.back') }}
             </x-installer::button>
         </div>
     </div>

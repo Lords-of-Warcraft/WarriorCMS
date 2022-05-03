@@ -13,5 +13,5 @@
 
 Route::prefix('home')->middleware(['installstatus', 'theme:'.Config('theme.active')])->group(function() {
     Theme::set(Config('theme.active'));
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('home');
 });

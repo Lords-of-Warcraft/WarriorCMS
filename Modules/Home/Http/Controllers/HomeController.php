@@ -2,6 +2,7 @@
 
 namespace Modules\Home\Http\Controllers;
 
+use App\Models\GeneralModel;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

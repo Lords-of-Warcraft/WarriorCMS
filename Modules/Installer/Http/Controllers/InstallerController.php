@@ -3,7 +3,7 @@
 namespace Modules\Installer\Http\Controllers;
 
 use App\Models\GeneralModel;
-use App\Http\Controllers\UserController;
+use App\Models\Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -18,10 +18,10 @@ class InstallerController extends Controller
 {
     private $connected;
 
-    public function __construct(UserController $UserController)
+    public function __construct(Auth $AuthModel)
     {
         $this->connected = GeneralModel::testconnection();
-        $this->UserController = $UserController;
+        $this->AuthModel = $AuthModel;
     }
 
     /**
@@ -48,7 +48,7 @@ class InstallerController extends Controller
      */
     public function realm()
     {
-        return view('installer::realm', ['connected' => $this->connected, 'auths' => GeneralModel::getallauth()->get()]);
+        return view('installer::realm', ['connected' => $this->connected, 'auths' => GeneralModel::getallauth()]);
     }
 
     /**
@@ -93,6 +93,9 @@ class InstallerController extends Controller
 
        Config::write('app.name', $request->webname);
        Config::write('warriorcms.website_name', $request->webname);
+       Config::write('warriorcms.discord_server', $request->dcserver);
+       Config::write('warriorcms.discord_channel', $request->dcchannel);
+       Config::write('warriorcms.video_url', $request->bgvideourl);
        Config::write('app.url', $request->weburl);
        Config::write('database.connections.web.host', $request->webdbhostname);
        Config::write('database.connections.web.port', $request->webdbport);
@@ -102,6 +105,12 @@ class InstallerController extends Controller
 
        try {
         Artisan::call('migrate --force');
+       } catch (Throwable $e) {
+           return back()->with('errors', 'Something went wrong');
+       }
+
+       try {
+        Artisan::call('module:seed Installer');
        } catch (Throwable $e) {
            return back()->with('errors', 'Something went wrong');
        }
@@ -204,21 +213,23 @@ class InstallerController extends Controller
 
     public function finish(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|min:3',
-            'e_mail' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-       ]);
-
-        if ($validator->fails()) {
-            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        if (!$request->skipcreation)
+        {
+            $validator = Validator::make($request->all(), [
+                'username' => 'required|min:3',
+                'e_mail' => 'required|email',
+                'password' => 'required|confirmed|min:6',
+            ]);
+    
+            if ($validator->fails()) {
+                return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+            }
+    
+            $this->AuthModel->InsertUser($request->username, $request->e_mail, $request->password, 3);
         }
-
-        $this->UserController->RegisterUser($request->username, $request->e_mail, $request->password, 3);
 
         Config::write('warriorcms.installstatus', 1);
 
         return redirect('/home')->with('success', 'Installation was successfull');
-
     }
 }

@@ -22,7 +22,7 @@ return [
     | automatically to list of scanned folders.
     |
     */
-    'theme_path' => base_path('Themes'),
+    'theme_path' => public_path('Themes'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | then symlink can be false or true as your wish.
     |
     */
-    'symlink'    => true,
+    'symlink'    => false,
     
     /*
     |--------------------------------------------------------------------------

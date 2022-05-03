@@ -36,12 +36,20 @@
                     <div class="break"></div>
                     <x-installer::input class="input full text-white" name="password_confirmation" id="password_confirmation" type="password" />
                 </div>
+                <div class="mt-25">
+                    <x-installer::label for="skipcreation" :value="__('installer::general.skip')" class="poppins" />
+                    <br><br>
+                    <label class="switch">
+                        <input type="checkbox" name="skipcreation" id="skipcreation" vlaue="true">
+                        <span class="slider"></span>
+                    </label>
+                </div>
                 <x-installer::button class="mt-25 full submit text-white poppins">
                 <i class="" style="margin-right: 5px" data-feather="save"></i>
                 </x-installer::button>
             </form>
             <x-installer::button class="mt-25 half submit text-white poppins mb-4" onclick="location.href = '/installer/server'">
-            Back
+            {{ __('installer::general.back') }}
             </x-installer::button>
         </div>
     </div>

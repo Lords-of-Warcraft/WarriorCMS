@@ -38,4 +38,21 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Throwable $exception)
+    {
+        // We set theme for finding current theme view files.
+        if ($exception instanceof CustomException) {
+            return response()->view('errors.404', [], 404);
+        }
+    
+        return parent::render($request, $exception);
+    }
 }

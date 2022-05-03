@@ -27,6 +27,27 @@
                     <x-installer::input class="input full text-white" name="weburl" id="weburl" type="text" placeholder="https://warriorcms.com" />
                 </div>
 
+                <!-- Discord Server -->
+                <div class="mt-4">
+                    <x-installer::label for="dcserver" :value="__('installer::general.discord_server_id')" class="poppins" />
+                    <div class="break"></div>
+                    <x-installer::input class="input full text-white" name="dcserver" id="dcserver" type="text" placeholder="839421866229104641" value="839421866229104641" />
+                </div>
+
+                <!-- Discord Channel -->
+                <div class="mt-4">
+                    <x-installer::label for="dcchannel" :value="__('installer::general.discord_channel_id')" class="poppins" />
+                    <div class="break"></div>
+                    <x-installer::input class="input full text-white" name="dcchannel" id="dcchannel" type="text" placeholder="839421867059183618" value="839421867059183618" />
+                </div>
+
+                <!-- Video URL -->
+                <div class="mt-4">
+                    <x-installer::label for="bgvideourl" :value="__('installer::general.bgvideo')" class="poppins" />
+                    <div class="break"></div>
+                    <x-installer::input class="input full text-white" name="bgvideourl" id="bgvideourl" type="text" placeholder="https://bnetcmsus-a.akamaihd.net/cms/template_resource/4TBVITQDP0AW1650382032717.mp4" value="https://bnetcmsus-a.akamaihd.net/cms/template_resource/4TBVITQDP0AW1650382032717.mp4" />
+                </div>
+
                 <h3 class="category mt-25"><span class="text-white poppins text-uppercase text-bold"><i class="feather-16" style="margin-right: 5px" data-feather="database"></i>  {{ __('installer::general.database') }}</span></h3>
                 <!-- Database Settings -->
                 <div class="mt-4">
