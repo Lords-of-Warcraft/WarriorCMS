@@ -37,11 +37,11 @@ return [
 
         'web' => [
             'driver' => 'mysql',
-            'host' => '192.168.178.36',
-            'port' => '3306',
-            'database' => 'warriorcms',
-            'username' => 'admin',
-            'password' => 'DieSpinne123!',
+            'host' => 'placeholder',
+            'port' => 'placeholder',
+            'database' => 'placeholder',
+            'username' => 'placeholder',
+            'password' => 'placeholder',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

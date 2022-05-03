@@ -1,6 +1,6 @@
 <?php return array (
   'website_name' => 'WarriorCMS',
-  'installstatus' => 1,
+  'installstatus' => 0,
   'version' => '0.5.0',
   'discord_server' => '839421866229104641',
   'discord_channel' => '839421867059183618',
