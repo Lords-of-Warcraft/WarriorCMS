@@ -15,6 +15,8 @@
 
 [Screenshots](#Screenshots)
 
+[Known-Bugs](#Known-bugs)
+
 [Requirements](#Requirements)
 
 ### Features
@@ -36,6 +38,11 @@
 ### Screenshots
 
 ![Alt text](/screenshots/Screenshot1.png?raw=true "Installer")
+
+### Known-bugs
+
+- Error handling views managed outside the theme because inside the view is not recognized (i don´t know why (yet))
+- In Error view you are not logged in (wtf)
 
 ### Requirements
 
