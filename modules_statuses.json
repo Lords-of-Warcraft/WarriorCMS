@@ -1,0 +1,8 @@
+{
+    "Installer": true,
+    "Home": true,
+    "Admin": true,
+    "Test": true,
+    "User": true,
+    "News": true
+}
