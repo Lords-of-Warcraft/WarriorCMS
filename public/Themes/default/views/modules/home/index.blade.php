@@ -48,11 +48,8 @@
                         </div>
                     </div>
                     @foreach (getAllRealms() as $realm )
-                    <div class="Panel bordered Panel--normal Panel--left Panel--alignLeft Panel--overflowing">
-                        <div class="Panel-bg"
-                            data-background-image="https://bnetcmsus-a.akamaihd.net/cms/template_resource/X7MSA0VYMJ5C1649781770293.png"
-                            data-loaded="true"
-                            style="background-image: url(&quot;https://bnetcmsus-a.akamaihd.net/cms/template_resource/X7MSA0VYMJ5C1649781770293.png&quot;);">
+                    <div class="Panel bordered Panel--normal @if ($realm->exp == 7) Panel--right Panel--alignRight @else Panel--left Panel--alignLeft @endif Panel--overflowing">
+                        <div class="Panel-bg" style="background-image: url({{ url('/img/exp/'.$realm->exp.'.jpg') }}); background-size: cover;">
                             <div class="Panel-fg"></div>
                         </div>
                         <div class="Panel-area SyncHeight-item">
@@ -64,26 +61,16 @@
                                         coming, and with it another chance to relive the legend and face one of Azeroth's
                                         greatest villains. Return to Burning Crusade Classic™ today and prepare to face the
                                         Lich King in 2022.</div>
-                                    <div class="Panel-buttons"><a
-                                            class="Link Link--external Button Button--ghost Panel-button Button--purchase"
-                                            href="https://shop.battle.net/product/world-of-warcraft-subscription?utm_source=worldofwarcraft.com&amp;utm_campaign=bop-wow-global-subscription-classic&amp;utm_medium=internal&amp;utm_content=hp-panel"
-                                            data-analytics="homepage-panel"
-                                            data-analytics-placement="Shop: Classic Subscription">
+                                    <div class="Panel-buttons">
+                                        <a class="Link Link--external Button Button--ghost Panel-button Button--purchase" href="{{ url('realms/'.$realm->id) }}">
                                             <div class="Button-outer">
                                                 <div class="Button-inner">
                                                     <div class="Button-label" data-text="Subscribe Now">View Realm
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a><a class="Link Link--external Button Button--ghost Panel-button"
-                                            href="https://wowclassic.blizzard.com" data-analytics="homepage-panel"
-                                            data-analytics-placement="Page: Wrath Classic">
-                                            <div class="Button-outer">
-                                                <div class="Button-inner">
-                                                    <div class="Button-label" data-text="Learn More">Learn More</div>
-                                                </div>
-                                            </div>
-                                        </a></div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

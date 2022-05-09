@@ -64,6 +64,13 @@ class AdminController extends Controller
 
         // Run the update process
         $updater->source()->update($release);
+        
+        try {
+            Artisan::call('migrate --force');
+            Artisan::call('db:seed --force');
+        } catch (Throwable $e) {
+            return back()->with('errors', 'Something went wrong');
+        }
 
         return back()->with('success', 'Update Complete');
 
