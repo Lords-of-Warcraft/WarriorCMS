@@ -57,8 +57,6 @@
 
 ### Requirements
 
-[Composer](https://getcomposer.org/)
-
 [PHP 7.3^](https://www.php.net)
 
 | PHP Extension | Apache2 Modules |
