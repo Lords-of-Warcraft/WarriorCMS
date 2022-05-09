@@ -37,7 +37,7 @@
             })
         </script>
         <footer class="text-white poppins">
-            V.{{ config('self-update.version_installed', 'Unknown Version') }}
+            {{ config('self-update.version_installed', 'Unknown Version') }}
         </footer>
     </body>
 </html>

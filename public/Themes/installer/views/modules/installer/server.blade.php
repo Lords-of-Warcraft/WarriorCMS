@@ -57,7 +57,7 @@
                                     <form method=POST action=server/auth/remove>
                                     @csrf
                                         <input type=hidden name=id value={{$auth->id}}>
-                                        <button type=submit>Delete</button>
+                                        <button type="submit" class="delete">Delete</button>
                                     </form>
                                 </th>
                             </tr>
@@ -105,7 +105,7 @@
                                 <form method=POST action=server/realm/remove>
                                 @csrf
                                     <input type=hidden name=id value={{$realm->id}}>
-                                    <button>Delete</button>
+                                    <button type="submit" class="delete">Delete</button>
                                 </form>
                             </th>
                         </tr>

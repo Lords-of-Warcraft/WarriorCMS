@@ -104,12 +104,7 @@ class InstallerController extends Controller
 
        try {
         Artisan::call('migrate --force');
-       } catch (Throwable $e) {
-           return back()->with('errors', 'Something went wrong');
-       }
-
-       try {
-        Artisan::call('module:seed Installer');
+        Artisan::call('module:seed Installer --force');
        } catch (Throwable $e) {
            return back()->with('errors', 'Something went wrong');
        }

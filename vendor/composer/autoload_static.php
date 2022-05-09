@@ -443,8 +443,8 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            1 => __DIR__ . '/..' . '/league/uri/src',
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -613,8 +613,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\GeneralController' => __DIR__ . '/../..' . '/app/Http/Controllers/GeneralController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\Installstatus' => __DIR__ . '/../..' . '/app/Http/Middleware/Installstatus.php',
+        'App\\Http\\Middleware\\Logged' => __DIR__ . '/../..' . '/app/Http/Middleware/Logged.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
@@ -3378,6 +3380,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Mockery\\Undefined' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Undefined.php',
         'Mockery\\VerificationDirector' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationDirector.php',
         'Mockery\\VerificationExpectation' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationExpectation.php',
+        'Modules\\Admin\\Database\\Seeders\\AdminDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Admin/Database/Seeders/AdminDatabaseSeeder.php',
+        'Modules\\Admin\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/Modules/Admin/Http/Controllers/AdminController.php',
+        'Modules\\Admin\\Providers\\AdminServiceProvider' => __DIR__ . '/../..' . '/Modules/Admin/Providers/AdminServiceProvider.php',
+        'Modules\\Admin\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Admin/Providers/RouteServiceProvider.php',
         'Modules\\Home\\Database\\Seeders\\HomeDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Home/Database/Seeders/HomeDatabaseSeeder.php',
         'Modules\\Home\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/Modules/Home/Http/Controllers/HomeController.php',
         'Modules\\Home\\Providers\\HomeServiceProvider' => __DIR__ . '/../..' . '/Modules/Home/Providers/HomeServiceProvider.php',
@@ -3722,7 +3728,6 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
-        'PHPStan\\ExtensionInstaller\\GeneratedConfig' => __DIR__ . '/..' . '/phpstan/extension-installer/src/GeneratedConfig.php',
         'PHPStan\\ExtensionInstaller\\Plugin' => __DIR__ . '/..' . '/phpstan/extension-installer/src/Plugin.php',
         'PHPStan\\PhpDoc\\PHPUnit\\MockObjectTypeNodeResolverExtension' => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src/PhpDoc/PHPUnit/MockObjectTypeNodeResolverExtension.php',
         'PHPStan\\Rules\\PHPUnit\\AssertRuleHelper' => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src/Rules/PHPUnit/AssertRuleHelper.php',

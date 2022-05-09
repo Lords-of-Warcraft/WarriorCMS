@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'version_installed' => 'v.0.5',
+    'version_installed' => 'v.0.6',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,8 @@ return [
             'repository_name'      => 'WarriorCMS',
             'repository_url'       => 'https://github.com/World-of-Warriors/WarriorCMS',
             'download_path'        => '/tmp',
-            'private_access_token' => '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',
+            'private_access_token' => '',
+
         ],
         'gitlab' => [
             'type'                 => 'gitlab',
