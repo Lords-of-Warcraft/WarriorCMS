@@ -38,6 +38,14 @@
 
 ### HowToInstall
 
+1. Download the latest release [here](https://github.com/World-of-Warriors/WarriorCMS/releases/latest)
+2. Unzip all files into your webserver
+3. Rename the .env.example file to .env
+4. Launch your application
+
+
+- For more information visit the [wiki](https://github.com/World-of-Warriors/WarriorCMS/wiki/Install)
+
 ### Screenshots
 
 ![Alt text](/screenshots/Screenshot1.png?raw=true "Installer")
