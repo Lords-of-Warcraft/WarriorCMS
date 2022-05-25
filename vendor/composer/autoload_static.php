@@ -3728,6 +3728,7 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPStan\\ExtensionInstaller\\GeneratedConfig' => __DIR__ . '/..' . '/phpstan/extension-installer/src/GeneratedConfig.php',
         'PHPStan\\ExtensionInstaller\\Plugin' => __DIR__ . '/..' . '/phpstan/extension-installer/src/Plugin.php',
         'PHPStan\\PhpDoc\\PHPUnit\\MockObjectTypeNodeResolverExtension' => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src/PhpDoc/PHPUnit/MockObjectTypeNodeResolverExtension.php',
         'PHPStan\\Rules\\PHPUnit\\AssertRuleHelper' => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src/Rules/PHPUnit/AssertRuleHelper.php',

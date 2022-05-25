@@ -93,7 +93,8 @@ class Auth extends Model
         if (!$web_acc) {
             DB::connection('web')->table('profiles')->insert([
                 'id'    => $game_acc->id,
-                'name'  => $game_acc->username
+                'name'  => $game_acc->username,
+                'mail'  => $game_acc->email
             ]);
         }
 
@@ -194,8 +195,9 @@ class Auth extends Model
 			}
 
             DB::connection('web')->table('profiles')->insert([
-                'id'    => $game_acc->id,
-                'name'  => $game_acc->username
+                'id'    => $id,
+                'name'  => $username,
+                'mail'  => $email
             ]);
 
 			GeneralModel::deleteDynamicDBConnection('auth');

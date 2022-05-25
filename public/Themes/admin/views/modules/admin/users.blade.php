@@ -49,10 +49,10 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
+                            <th>Username</th>
+                            <th>E-Mail</th>
                             <th>Status</th>
-                            <th>Reason</th>
+                            <th>Settings</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -60,9 +60,19 @@
                           <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>{{ $user->mail }}</td>
+                            <td><span class="badge badge-@if ($user->status == 'pending')warning @elseif ($user->status == 'active')success @elseif ($user->status == 'banned')danger @endif">{{ $user->status }}</span></td>
+                            <td>
+                              <a class="btn btn-app bg-success">
+                                <i class="fas fa-cog"></i> Edit
+                             </a>
+                             <a class="btn btn-app bg-danger">
+                              <i class="fas fa-hammer"></i> Ban
+                           </a>
+                              <a class="btn btn-app bg-danger">
+                                 <i class="fas fa-trash"></i> Delete
+                              </a>
+                            </td>
                           </tr>
                         @endforeach
                         </tbody>

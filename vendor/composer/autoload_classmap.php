@@ -3126,6 +3126,7 @@ return array(
     'Opis\\Closure\\SecurityProvider' => $vendorDir . '/opis/closure/src/SecurityProvider.php',
     'Opis\\Closure\\SelfReference' => $vendorDir . '/opis/closure/src/SelfReference.php',
     'Opis\\Closure\\SerializableClosure' => $vendorDir . '/opis/closure/src/SerializableClosure.php',
+    'PHPStan\\ExtensionInstaller\\GeneratedConfig' => $vendorDir . '/phpstan/extension-installer/src/GeneratedConfig.php',
     'PHPStan\\ExtensionInstaller\\Plugin' => $vendorDir . '/phpstan/extension-installer/src/Plugin.php',
     'PHPStan\\PhpDoc\\PHPUnit\\MockObjectTypeNodeResolverExtension' => $vendorDir . '/phpstan/phpstan-phpunit/src/PhpDoc/PHPUnit/MockObjectTypeNodeResolverExtension.php',
     'PHPStan\\Rules\\PHPUnit\\AssertRuleHelper' => $vendorDir . '/phpstan/phpstan-phpunit/src/Rules/PHPUnit/AssertRuleHelper.php',
