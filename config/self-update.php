@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'version_installed' => 'v.0.8',
+    'version_installed' => env('APP_VERSION', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
         'storage/framework',
         'storage/logs',
         'storage/self-update',
-        'config/warriorcms.php',
+        'config'
     ],
 
     /*
