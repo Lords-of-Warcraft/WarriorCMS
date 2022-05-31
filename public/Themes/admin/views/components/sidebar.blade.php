@@ -50,7 +50,7 @@ if (session('logged') === TRUE)
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ route('admin_dashboard') }}" class="nav-link @if (request()->routeIs('admin_dashboard')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fa-solid fa-gauge-high"></i>
               <p>
                 Dashboard
               </p>
@@ -69,6 +69,18 @@ if (session('logged') === TRUE)
                 <a href="{{ route('admin_settings') }}" class="nav-link @if (request()->routeIs('admin_settings')) active @endif">
                   <i class="fas fa-sliders-h"></i>
                   <p>Settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin_modules') }}" class="nav-link @if (request()->routeIs('admin_modules')) active @endif">
+                  <i class="fas fa-stream"></i>
+                  <p>Realms</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin_modules') }}" class="nav-link @if (request()->routeIs('admin_modules')) active @endif">
+                  <i class="fa-solid fa-bars-progress"></i>
+                  <p>Auth</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -97,7 +109,14 @@ if (session('logged') === TRUE)
             </ul>
           </li>
           <li class="nav-header">Modules</li>
-          
+          @foreach (getAllModules()->where('status', 1)->where('has_settings', 1)->get() as $module)
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/admin/modules/'.$module->name) }}">
+              <i class="fas fa-{{ $module->icon }}"></i>
+              <p>{{ $module->name }}</p>
+            </a>
+          </li>
+          @endforeach
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
