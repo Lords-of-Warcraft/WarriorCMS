@@ -20,7 +20,7 @@ class Logged
         {
             return $next($request);
         } else {
-            return redirect('/home')->with('toast_error', 'You are not logged in');
+            return redirect('/user/login')->with('toast_error', 'You are not logged in');
         }
     }
 }
