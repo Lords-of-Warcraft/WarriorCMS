@@ -2,6 +2,9 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\GeneralModel;
+use App\Models\WoWModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -38,13 +41,53 @@ class AdminController extends Controller
         return view('admin::users');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function modules()
     {
-        return view('admin::create');
+        return view('admin::modules');
+    }
+
+    public function moduleSettings($module)
+    {
+        if (!getAllModules()->where('name', $module)->first())
+        {
+            return redirect()->back()->with('toast_error', 'Module not found');
+        }
+
+        return view('admin::'.$module.'.settings');
+    }
+
+    public function activateModule($module)
+    {
+        if(DB::table('modules')->where('id', $module)->update(['status' => 1]));
+        {
+            return back()->with('success', 'Module activated');
+        }
+
+        return back()->with('toast_error', 'something went wrong');
+    }
+
+    public function deactivateModule($module)
+    {
+        if(DB::table('modules')->where('id', $module)->update(['status' => 0]));
+        {
+            return back()->with('success', 'Module deactivated');
+        }
+
+        return back()->with('toast_error', 'something went wrong');
+    }
+
+    public function usersview(Request $request, $id)
+    {
+        if (empty(getUserDataByID('username', $id))) {
+            return view('admin::usernotfound');
+        } else {
+            $data = [
+                'id'       => $id,
+                'username' => getUserDataByID('username', $id),
+            ];
+
+            return view('admin::usersview', $data);
+        }
     }
 
     public function update(\Codedge\Updater\UpdaterManager $updater)
@@ -78,45 +121,5 @@ class AdminController extends Controller
         } else {
             return back()->with('info', 'No new version');
         }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
