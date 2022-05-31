@@ -55,10 +55,38 @@ function getUserDataByID($type, $id)
 
 function getAllRealms()
 {
-    return DB::connection('web')->table('realms')->get();
+    return DB::connection('web')->table('realms');
+}
+
+function getAllAuth()
+{
+    return DB::connection('web')->table('auth')->get();
+}
+
+function getCharactersByRealmID($id) {
+
+    $realm = DB::connection('web')->table('realms')->where('id', $id)->first();
+
+    GeneralModel::buildDynamicDBConnection('realm', $realm);
+
+    DB::purge('realm');
+
+	DB::setDefaultConnection('realm');
+
+    return DB::table('characters');
 }
 
 function getAllUser()
 {
     return DB::connection('web')->table('profiles');
+}
+
+function getAllModules()
+{
+    return DB::connection('web')->table('modules');
+}
+
+function getDBSettings($identifier)
+{
+    return DB::connection('web')->table('settings')->where('identifier', $identifier)->first()->value;
 }
