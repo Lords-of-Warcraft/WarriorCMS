@@ -49,29 +49,27 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Username</th>
-                            <th>E-Mail</th>
+                            <th>Module</th>
                             <th>Status</th>
                             <th>Settings</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach (getAllUser()->paginate(6) as $user)
+                        @foreach (getAllModules()->where('name', '!=', 'Installer')->where('name', '!=', 'Admin')->paginate(6) as $module)
                           <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->mail }}</td>
-                            <td><span class="badge badge-@if ($user->status == 'pending')warning @elseif ($user->status == 'active')success @elseif ($user->status == 'banned')danger @endif">{{ $user->status }}</span></td>
+                            <td>{{ $module->id }}</td>
+                            <td>{{ $module->name }}</td>
+                            <td><span class="badge badge-@if ($module->status == 1)success @elseif ($module->status == 0)danger @endif">@if ($module->status == 1) Active @elseif ($module->status == 0) Disabled @endif</span></td>
                             <td>
-                              <a class="btn btn-app bg-success" href="{{ url('/admin/users')}}/{{ $user->id }}">
-                                <i class="fas fa-cog"></i> Edit
-                             </a>
-                             <a class="btn btn-app bg-danger">
-                              <i class="fas fa-hammer"></i> Ban
-                           </a>
-                              <a class="btn btn-app bg-danger">
-                                 <i class="fas fa-trash"></i> Delete
+                              @if ($module->status == 1)
+                              <a class="btn btn-app bg-danger" href="/admin/modules/deactivate/{{$module->id}}">
+                                 <i class="fas fa-power-off"></i> Deactivate
                               </a>
+                              @elseif ($module->status == 0)
+                              <a class="btn btn-app bg-success" href="/admin/modules/activate/{{$module->id}}">
+                                <i class="fas fa-power-off"></i> Activate
+                             </a>
+                             @endif
                             </td>
                           </tr>
                         @endforeach

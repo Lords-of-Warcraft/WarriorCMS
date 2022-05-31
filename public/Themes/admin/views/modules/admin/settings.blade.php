@@ -81,6 +81,13 @@
                       <label for="videourl">Frontpage Video URL</label>
                       <input name="videourl" type="text" class="form-control form-control-border" id="videourl" value="{{ Config('warriorcms.video_url') }}" placeholder="{{ Config('warriorcms.video_url') }}">
                     </div>
+                    <div class="form-group">
+                      <label for="exampleSelectBorder">Account activation</label>
+                      <select class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option @if (getDBSettings('user_activation') == 'TRUE') selected @endif>On</option>
+                        <option @if (getDBSettings('user_activation') == 'FALSE') selected @endif>Off</option>
+                      </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                   </form>
                 </div>
@@ -91,23 +98,23 @@
             <div class="col-sm-3">
               <div class="card card-outline card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Update</h3>
+                  <h3 class="card-title">E-Mail</h3>
                   <div class="card-tools">
-                    <!-- Buttons, labels, and many other things can be placed here! -->
-                    <!-- Here is a label for example -->
-                    <span class="badge badge-primary">Label</span>
+                    
                   </div>
                   <!-- /.card-tools -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  The body of the card
+                  <form>
+                    <div class="form-group">
+                      <label for="mail_from">Mail from</label>
+                      <input name="mail_from" type="text" class="form-control form-control-border" id="mail_from" value="{{ getDBSettings('mail_from') }}" placeholder="{{ getDBSettings('mail_from') }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </form>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer">
-                  The footer of the card
-                </div>
-                <!-- /.card-footer -->
               </div>
               <!-- /.card -->
             </div>

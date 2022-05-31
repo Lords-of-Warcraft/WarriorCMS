@@ -17,10 +17,10 @@
     </head>
     <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-        <x-admin::menu />
-        <x-admin::sidebar />
+        <x-menu />
+        <x-sidebar/>
         @yield('content')
-        <x-admin::footer />
+        <x-footer />
         @include('sweetalert::alert')
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->
@@ -37,9 +37,16 @@
         <script src="{{ Theme::assets('plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
         <script src="{{ Theme::assets('plugins/raphael/raphael.min.js') }}"></script>
         <script src="{{ Theme::assets('plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
-        <script src="{{ Theme::assets('plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
 
         <!-- ChartJS -->
         <script src="{{ Theme::assets('plugins/chart.js/Chart.min.js') }}"></script>
+
+        <!-- Bootstrap -->
+
+        <!-- Fontawesome -->
+        <script src="{{ Theme::assets('plugins/fontawesome-free/js/all.min.js') }}"></script>
+        <script>
+            
+        </script>
     </body>
 </html>
