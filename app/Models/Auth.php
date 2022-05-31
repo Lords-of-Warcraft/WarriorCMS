@@ -12,6 +12,8 @@ use DuelistRag3\Wowemu\SRP\UserClient;
 
 class Auth extends Model
 {
+    public $timestamps = true;
+
     public function sessionArray($id)
     {
         $data = array(
@@ -59,12 +61,13 @@ class Auth extends Model
 		DB::setDefaultConnection('auth');
 
         $game_acc = DB::connection('auth')->table('account')->where('username', $user)->orWhere('email', $user)->first();
-        $web_acc  = DB::connection('web')->table('profiles')->where('id', $game_acc->id)->first();
         $emulator = $auth->auth_type;
 
         if (empty($game_acc)) {
             return back()->with('toast_error', 'User not found');
         }
+
+        $web_acc  = DB::connection('web')->table('profiles')->where('id', $game_acc->id)->first();
 
         switch ($emulator) {
             case 'srp6':
