@@ -366,6 +366,7 @@ if (session('logged') === TRUE)
                                             </div>
                                             <div class="Navbar-accountDropdownLinkLabel">{{ lang('content.account') }}</div>
                                         </a>
+                                        @if (session('session_gmlevel') == 3)
                                         <a href="{{ url('/admin') }}"
                                             class="Navbar-accountDropdownLink Navbar-accountDropdownSettings"
                                             data-analytics="global-nav"
@@ -377,6 +378,7 @@ if (session('logged') === TRUE)
                                             </div>
                                             <div class="Navbar-accountDropdownLinkLabel">Admin Panel</div>
                                         </a>
+                                        @endif
                                         <a href="{{ url('/user/logout') }}"
                                             class="Navbar-accountDropdownLink Navbar-accountDropdownSettings"
                                             data-analytics="global-nav"
@@ -415,7 +417,7 @@ if (session('logged') === TRUE)
                                 </a>
                                 <div class="Navbar-accountDropdownLoggedOut">
                                     <div role="presentation" class="Navbar-modalSection">
-                                        <a href="{{ url('/login') }}"
+                                        <a href="{{ url('user/login') }}"
                                             class="Navbar-accountDropdownButtonLink Navbar-button is-full"
                                             data-analytics="global-nav"
                                             data-analytics-placement="Nav - Account - Logi in">
@@ -514,21 +516,21 @@ if (session('logged') === TRUE)
                                         <div class="space-normal"></div>
                                         <div class="BnetNav-mobileSiteMenuList List List--vertical List--full">
                                             <div class="BnetNav-mobileSiteMenuListItem List-item">
-                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="#"
+                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="{{ url('') }}"
                                                     data-analytics="main-nav" data-analytics-placement="Home">
                                                     <span class="BnetNav-mobileSiteMenuLinkText text-upper"
                                                         data-text="Home">{{ lang('content.home') }}</span>
                                                 </a>
                                             </div>
                                             <div class="BnetNav-mobileSiteMenuListItem List-item">
-                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="#"
+                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="{{ url('/news') }}"
                                                     data-analytics="main-nav" data-analytics-placement="News">
                                                     <span class="BnetNav-mobileSiteMenuLinkText text-upper"
                                                         data-text="News">{{ lang('content.news') }}</span>
                                                 </a>
                                             </div>
                                             <div class="BnetNav-mobileSiteMenuListItem List-item">
-                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="#"
+                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="{{ url('/downloads') }}"
                                                     data-analytics="main-nav" data-analytics-placement="Forums">
                                                     <span class="BnetNav-mobileSiteMenuLinkText text-upper"
                                                         data-text="Downloads">{{ lang('content.downloads') }}</span>
@@ -557,8 +559,7 @@ if (session('logged') === TRUE)
                                                                 <div
                                                                     class="DropdownLink DropdownLink--gold BnetNav-mobileSiteMenuLink">
                                                                     <div class="Pair">
-                                                                        <div class="Pair-left">Arena World
-                                                                            Championship</div>
+                                                                        <div class="Pair-left">Realms</div>
                                                                         <div class="Pair-right">
                                                                             <div
                                                                                 class="BnetNav-mobileDropdownIndicator DropdownLink-indicator">
@@ -570,37 +571,10 @@ if (session('logged') === TRUE)
                                                             <div class="Dropdown"
                                                                 name="BnetNav-mobileSiteMenu-category-5"
                                                                 data-dropdown-group="BnetNav-mobileSiteMenuSubsections">
-                                                                <div
-                                                                    class="BnetNav-mobileSiteMenuList List List--full List--vertical">
-                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink"
-                                                                        href="/en-us/esports/arena" type="CATEGORY_ITEM"
-                                                                        data-analytics="main-nav"
-                                                                        data-analytics-placement="Esports - Arena - Introduction"
-                                                                        data-default-tabindex="0"
-                                                                        tabindex="-1">Introduction</a>
-                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink"
-                                                                        href="/en-us/esports/arena#schedule"
-                                                                        type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                                        data-analytics-placement="Esports - Arena - Standings and Schedule"
-                                                                        data-default-tabindex="0" tabindex="-1">Schedule
-                                                                        and Standings</a>
-                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink"
-                                                                        href="/en-us/esports/arena#news"
-                                                                        type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                                        data-analytics-placement="Esports - Arena - News"
-                                                                        data-default-tabindex="0" tabindex="-1">News</a>
-                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink"
-                                                                        href="/en-us/esports/arena#hof"
-                                                                        type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                                        data-analytics-placement="Esports - Arena - Hall of Fame"
-                                                                        data-default-tabindex="0" tabindex="-1">Hall of
-                                                                        Fame</a>
-                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink"
-                                                                        href="/en-us/esports/arena#rules"
-                                                                        type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                                        data-analytics-placement="Esports - Arena - Inside the World Championship"
-                                                                        data-default-tabindex="0" tabindex="-1">Inside
-                                                                        the World Championship</a>
+                                                                <div class="BnetNav-mobileSiteMenuList List List--full List--vertical">
+                                                                    @foreach (getAllRealms()->get() as $realm)
+                                                                    <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="{{ url('realms/'.$realm->id)}}">{{ $realm->realmname}}</a>
+                                                                    @endforeach 
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -698,7 +672,7 @@ if (session('logged') === TRUE)
                                             @else
                                             <div class="BnetNav-mobileSiteMenuListItem List-item"
                                                 data-test-id="3f056bb1133c182b8785d65f77042b58">
-                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="#"
+                                                <a class="Link Link--block BnetNav-mobileSiteMenuLink" href="{{ url('/user/login') }}"
                                                     data-analytics="main-nav"
                                                     data-analytics-placement="Community - Log In" rel="nofollow">
                                                     <span class="BnetNav-mobileSiteMenuLinkText text-upper"
@@ -710,7 +684,7 @@ if (session('logged') === TRUE)
                                                 data-test-id="dee9617eb2e140df59d4dcb648c1b1b5">
                                                 <div class="BnetNav-mobileSiteMenuListItemWrap">
                                                     <a class="Link Link--external Link--block BnetNav-mobileSiteMenuLink BnetNav-mobileSiteMenuLink--signup"
-                                                        href="#">
+                                                        href="{{ url('/user/register') }}">
                                                         <span class="BnetNav-mobileSiteMenuLinkText text-upper"
                                                             data-text="Register">{{ lang('content.register') }}</span>
                                                     </a>
@@ -740,4 +714,4 @@ if (session('logged') === TRUE)
         </div>
     </div>
 </div>
-<x-home::secondmenu />
+<x-secondmenu />

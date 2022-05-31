@@ -160,9 +160,9 @@
     </script>
     <div class="body">
         <div class="page">
-            <x-home::menu />
+            <x-menu />
             @yield('content')
-            <x-home::footer />
+            <x-footer />
         </div>
     </div>
 

@@ -162,7 +162,7 @@ if (session('logged') === TRUE)
                                         <div class="SiteNav-sectionTitle font-title-tiny-onDark">Realms</div>
                                     </div>
                                     <div class="List-item gutter-tiny gutter-vertical">
-                                        @foreach (getAllRealms() as $realm)
+                                        @foreach (getAllRealms()->get() as $realm)
                                         <div class="gutter-vertical gutter-tiny">
                                             <a class="Link Link--block SiteNav-pageLink"href="{{ url('realms/'.$realm->id)}}" type="CATEGORY_ITEM">{{ $realm->realmname}}</a>
                                         </div>
@@ -218,121 +218,6 @@ if (session('logged') === TRUE)
                                                 type="CATEGORY_ITEM" data-analytics="main-nav"
                                                 data-analytics-placement="Story - Timeline" data-default-tabindex="0"
                                                 tabindex="-1">The Story of Warcraft</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Grid-1of5">
-                                <div class="List List--full List--vertical List--separator List--separatorBrownMedium">
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="SiteNav-sectionTitle font-title-tiny-onDark">Guides &amp;
-                                            Information</div>
-                                    </div>
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink" href="/en-us/start"
-                                                type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                data-analytics-placement="Game - Guides - New Players"
-                                                data-default-tabindex="0" tabindex="-1">New to WoW</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink" href="/en-us/return"
-                                                type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                data-analytics-placement="Game - Guides - Returning Players"
-                                                data-default-tabindex="0" tabindex="-1">Returning Players</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink" href="/en-us/game/status"
-                                                type="CATEGORY_ITEM" data-analytics="main-nav"
-                                                data-analytics-placement="Game - Guides - Realm Status"
-                                                data-default-tabindex="0" tabindex="-1">Realm Status</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink"
-                                                href="/en-us/game/recruit-a-friend" type="CATEGORY_ITEM"
-                                                data-analytics="main-nav"
-                                                data-analytics-placement="Game - Guides - Recruit A Friend"
-                                                data-default-tabindex="0" tabindex="-1">Recruit A Friend</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink"
-                                                href="/en-us/content-update-notes" type="CATEGORY_ITEM"
-                                                data-analytics="main-nav"
-                                                data-analytics-placement="Game - Guides - Content Update Notes"
-                                                data-default-tabindex="0" tabindex="-1">Content Update Notes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Grid-1of5">
-                                <div class="List List--full List--vertical List--separator List--separatorBrownMedium">
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="SiteNav-sectionTitle font-title-tiny-onDark">Competitive</div>
-                                    </div>
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink"
-                                                href="/en-us/game/hall-of-fame/mythic-raid" type="CATEGORY_ITEM"
-                                                data-analytics="main-nav"
-                                                data-analytics-placement="Game - Gameplay - Mythic Raid Hall of Fame"
-                                                data-default-tabindex="0" tabindex="-1">Mythic Raid Hall of Fame</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink"
-                                                href="/en-us/game/pve/leaderboards" type="CATEGORY_ITEM"
-                                                data-analytics="main-nav"
-                                                data-analytics-placement="Game - Gameplay - Mythic Leaderboards"
-                                                data-default-tabindex="0" tabindex="-1">Mythic Keystone Dungeon
-                                                Leaderboards</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink"
-                                                href="/en-us/game/pvp/leaderboards/3v3" type="CATEGORY_ITEM"
-                                                data-analytics="main-nav"
-                                                data-analytics-placement="Game - Gameplay - Leaderboards"
-                                                data-default-tabindex="0" tabindex="-1">PvP Leaderboards</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Grid-1of5">
-                                <div class="List List--full List--vertical List--separator List--separatorBrownMedium">
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="SiteNav-sectionTitle font-title-tiny-onDark">Expansions</div>
-                                    </div>
-                                    <div class="List-item gutter-tiny gutter-vertical">
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--external Link--block SiteNav-pageLink"
-                                                href="https://dragonflight.blizzard.com/" type="CATEGORY_ITEM"
-                                                data-analytics="Game - Expansions - Dragonflight"
-                                                data-analytics-placement="main-nav" data-default-tabindex="0"
-                                                tabindex="-1">
-                                                Dragonflight
-                                                <sup class="font-sup color-gold-medium">New</sup>
-                                            </a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink" href="/en-us/shadowlands"
-                                                type="CATEGORY_ITEM" data-analytics="Game - Expansions - Shadowlands"
-                                                data-analytics-placement="main-nav" data-default-tabindex="0"
-                                                tabindex="-1">Shadowlands</a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--external Link--block SiteNav-pageLink"
-                                                href="https://wowclassic.blizzard.com/" type="CATEGORY_ITEM"
-                                                data-analytics="Game - Expansions - Wrath of the Lich King Classic"
-                                                data-analytics-placement="main-nav" data-default-tabindex="0"
-                                                tabindex="-1">
-                                                Wrath of the Lich King Classic
-                                                <sup class="font-sup color-gold-medium">New</sup>
-                                            </a>
-                                        </div>
-                                        <div class="gutter-vertical gutter-tiny">
-                                            <a class="Link Link--block SiteNav-pageLink" href="/en-us/wowclassic"
-                                                type="CATEGORY_ITEM"
-                                                data-analytics="Game - Expansions - Burning Crusade Classic"
-                                                data-analytics-placement="main-nav" data-default-tabindex="0"
-                                                tabindex="-1">Burning Crusade Classic</a>
                                         </div>
                                     </div>
                                 </div>
