@@ -1,7 +1,7 @@
 # _WarriorCMS_
 
 [![Project Status](https://img.shields.io/badge/Status-Beta-yellow.svg?style=flat-square)](#)
-![version](https://img.shields.io/badge/version-v.0.9.2-blue?style=flat-square)
+![version](https://img.shields.io/badge/version-v.0.9.3-blue?style=flat-square)
 
 **WarriorCMS** is an Open Source CMS for world of warcraft p-server projects developed with [Laravel](https://laravel.com)
 
@@ -26,12 +26,12 @@
 - [x] Multi Realms
 - [x] Easy to use installer
 - [x] Register
-- [ ] Login -- Curently under developement
+- [x] Login
 - [x] Start page
 - [x] Multi Language support
 - [ ] Forum
 - [ ] Recruit a friend
-- [ ] Admin panel
+- [x] Admin panel -- currently under dev
 - [ ] Module installer
 - [ ] Profile
 - [ ] Friend list
