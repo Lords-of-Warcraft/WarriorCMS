@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Kdabrow\SeederOnce\SeederOnce;
 
 class SettingsSeeder extends Seeder
 {
+    use SeederOnce;
     /**
      * Run the database seeds.
      *

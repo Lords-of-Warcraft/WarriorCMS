@@ -11,6 +11,7 @@
         "duelistrag3/php-wowemu-auth": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kdabrow/seeder-once": "^2.2",
         "laravel/framework": "^8.65",
         "laravel/tinker": "^2.5",
         "nwidart/laravel-modules": "^8.2",

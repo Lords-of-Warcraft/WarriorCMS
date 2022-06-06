@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '89b4bc9337ee2f42cd001eee3df3620214b616ab',
+        'reference' => 'd10a9985fe3625b6a0e2eaba38c044878d12d59a',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -424,6 +424,15 @@
                 0 => 'v8.83.10',
             ),
         ),
+        'kdabrow/seeder-once' => array(
+            'pretty_version' => '2.2.0',
+            'version' => '2.2.0.0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../kdabrow/seeder-once',
+            'aliases' => array(),
+            'reference' => 'a62ccc186a69d47e954ec9a26f88b8b06e96a987',
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -445,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '89b4bc9337ee2f42cd001eee3df3620214b616ab',
+            'reference' => 'd10a9985fe3625b6a0e2eaba38c044878d12d59a',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

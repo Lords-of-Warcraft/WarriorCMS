@@ -1804,6 +1804,69 @@
             "install-path": "../hassankhan/config"
         },
         {
+            "name": "kdabrow/seeder-once",
+            "version": "2.2.0",
+            "version_normalized": "2.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/karoldabro/seeder-once.git",
+                "reference": "a62ccc186a69d47e954ec9a26f88b8b06e96a987"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/karoldabro/seeder-once/zipball/a62ccc186a69d47e954ec9a26f88b8b06e96a987",
+                "reference": "a62ccc186a69d47e954ec9a26f88b8b06e96a987",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.0 || ^9.0",
+                "illuminate/database": "^8.0 || ^9.0",
+                "illuminate/support": "^8.0 || ^9.0",
+                "php": ">= 7.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0 || ^7.0"
+            },
+            "time": "2022-04-01T10:27:52+00:00",
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kdabrow\\SeederOnce\\Providers\\SeederOnceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Kdabrow\\SeederOnce\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Karol Dąbrowski",
+                    "email": "karol_dabrowski@interia.eu",
+                    "homepage": "http://kdabrow.com"
+                }
+            ],
+            "description": "Run your laravel seeders only once",
+            "keywords": [
+                "database",
+                "laravel",
+                "php",
+                "seeder"
+            ],
+            "support": {
+                "issues": "https://github.com/karoldabro/seeder-once/issues",
+                "source": "https://github.com/karoldabro/seeder-once/tree/2.2.0"
+            },
+            "install-path": "../kdabrow/seeder-once"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.83.10",
             "version_normalized": "8.83.10.0",

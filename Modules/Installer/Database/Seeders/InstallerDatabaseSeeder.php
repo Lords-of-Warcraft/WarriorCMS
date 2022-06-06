@@ -5,9 +5,11 @@ namespace Modules\Installer\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Kdabrow\SeederOnce\SeederOnce;
 
 class InstallerDatabaseSeeder extends Seeder
 {
+    use SeederOnce;
     /**
      * Run the database seeds.
      *

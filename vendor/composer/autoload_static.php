@@ -149,6 +149,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sail\\' => 13,
         ),
+        'K' => 
+        array (
+            'Kdabrow\\SeederOnce\\' => 19,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -474,6 +478,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'Kdabrow\\SeederOnce\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kdabrow/seeder-once/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -624,7 +632,6 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Auth' => __DIR__ . '/../..' . '/app/Models/Auth.php',
         'App\\Models\\GeneralModel' => __DIR__ . '/../..' . '/app/Models/GeneralModel.php',
-        'App\\Models\\WoWModel' => __DIR__ . '/../..' . '/app/Models/WoWModel.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2892,6 +2899,11 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Kdabrow\\SeederOnce\\Commands\\InstallCommand' => __DIR__ . '/..' . '/kdabrow/seeder-once/src/Commands/InstallCommand.php',
+        'Kdabrow\\SeederOnce\\Contracts\\SeederOnceRepositoryInterface' => __DIR__ . '/..' . '/kdabrow/seeder-once/src/Contracts/SeederOnceRepositoryInterface.php',
+        'Kdabrow\\SeederOnce\\Providers\\SeederOnceProvider' => __DIR__ . '/..' . '/kdabrow/seeder-once/src/Providers/SeederOnceProvider.php',
+        'Kdabrow\\SeederOnce\\Repositories\\SeederRepository' => __DIR__ . '/..' . '/kdabrow/seeder-once/src/Repositories/SeederRepository.php',
+        'Kdabrow\\SeederOnce\\SeederOnce' => __DIR__ . '/..' . '/kdabrow/seeder-once/src/SeederOnce.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',
@@ -3396,6 +3408,7 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Modules\\Installer\\Providers\\InstallerServiceProvider' => __DIR__ . '/../..' . '/Modules/Installer/Providers/InstallerServiceProvider.php',
         'Modules\\Installer\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Installer/Providers/RouteServiceProvider.php',
         'Modules\\News\\Database\\Seeders\\NewsDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/News/Database/Seeders/NewsDatabaseSeeder.php',
+        'Modules\\News\\Entities\\News' => __DIR__ . '/../..' . '/Modules/News/Entities/News.php',
         'Modules\\News\\Http\\Controllers\\NewsController' => __DIR__ . '/../..' . '/Modules/News/Http/Controllers/NewsController.php',
         'Modules\\News\\Providers\\NewsServiceProvider' => __DIR__ . '/../..' . '/Modules/News/Providers/NewsServiceProvider.php',
         'Modules\\News\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/News/Providers/RouteServiceProvider.php',
