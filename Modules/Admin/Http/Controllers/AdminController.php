@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Models\GeneralModel;
 use App\Models\WoWModel;
+use Modules\News\Entities\News;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -48,12 +49,15 @@ class AdminController extends Controller
 
     public function moduleSettings($module)
     {
+        $data = [
+            'news' => News::getAllNews()->get(),
+        ];
         if (!getAllModules()->where('name', $module)->first())
         {
             return redirect()->back()->with('toast_error', 'Module not found');
         }
 
-        return view('admin::'.$module.'.settings');
+        return view('admin::'.$module.'.settings', $data);
     }
 
     public function activateModule($module)

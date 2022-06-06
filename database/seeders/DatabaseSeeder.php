@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 ModulesSeeder::class,
                 SettingsSeeder::class,
+                NewsSeeder::class,
             ]);
     }
 }
