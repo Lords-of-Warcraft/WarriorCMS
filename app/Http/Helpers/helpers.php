@@ -7,11 +7,6 @@ function dbLang($name)
     return DB::connection('web')->table('lang_strings')->where('name', $name)->where('lang_code', Lang::locale())->first()->content;
 }
 
-function getProfileImage($id)
-{
-    return DB::connection('web')->table('profile_images')->where('id', $id)->first()->name;
-}
-
 function getUserDataByID($type, $id)
 {
     $auth = DB::connection('web')->table('auth')->first();
@@ -36,10 +31,15 @@ function getUserDataByID($type, $id)
             $data = $user_auth->email;
             break;
         case 'profile_image':
-            $data = DB::connection('web')->table('profiles')->where('id', $id)->first()->profile_image;
+            #$data = DB::connection('web')->table('profiles')->where('id', $id)->first()->profile_image;
+            $data = Gravatar::get($user_auth->email);
             break;
         case 'gmlevel':
-            $level = DB::table('account_access')->where('id', $id)->first();
+            if (Schema::hasColumn('account_access', 'id'))
+                $level = DB::table('account_access')->where('id', $id)->first();
+
+            if (Schema::hasColumn('account_access', 'AccountID'))
+                $level = DB::table('account_access')->where('AccountID', $id)->first();
 
             if (! empty($level))
             {

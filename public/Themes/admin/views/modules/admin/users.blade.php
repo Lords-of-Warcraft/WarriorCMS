@@ -30,11 +30,11 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-      
+
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-      
+
                           <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                               <i class="fas fa-search"></i>
@@ -64,7 +64,7 @@
                             <td><span class="badge badge-@if ($user->status == 'pending')warning @elseif ($user->status == 'active')success @elseif ($user->status == 'banned')danger @endif">{{ $user->status }}</span></td>
                             <td>
                               <a class="btn btn-app bg-success" href="{{ url('/admin/users')}}/{{ $user->id }}">
-                                <i class="fas fa-cog"></i> Edit
+                                <i class="fas fa-binoculars"></i> View
                              </a>
                              <a class="btn btn-app bg-danger">
                               <i class="fas fa-hammer"></i> Ban
@@ -91,9 +91,9 @@
         </div>
     </section>
   </div>
-  
+
   <!-- /.content-wrapper -->
 
-  
+
 
 @endsection

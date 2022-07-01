@@ -4,7 +4,7 @@
     <main id="main" role="main">
         <div class="page-Home">
             <div class="page-Home-masthead">
-                <x-videopanel />
+                <x-videopanel :news="$news"/>
                     @foreach (getAllRealms()->get() as $realm )
                     <div class="page-Guide-section position-relative">
                         <div class="Divider"></div>

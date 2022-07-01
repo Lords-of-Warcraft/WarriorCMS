@@ -86,8 +86,9 @@ class AdminController extends Controller
             return view('admin::usernotfound');
         } else {
             $data = [
-                'id'       => $id,
-                'username' => getUserDataByID('username', $id),
+                'id'        => $id,
+                'username'  => getUserDataByID('username', $id),
+                'gmlevel'   => getUserDataByID('gmlevel', $id)
             ];
 
             return view('admin::usersview', $data);
@@ -112,7 +113,7 @@ class AdminController extends Controller
 
         // Run the update process
         $updater->source()->update($release);
-        
+
         try {
             Artisan::call('migrate --force');
             Artisan::call('db:seed --force');

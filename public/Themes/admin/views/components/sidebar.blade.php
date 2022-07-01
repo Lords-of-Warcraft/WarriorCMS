@@ -24,7 +24,7 @@ if (session('logged') === TRUE)
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ url('/img/profile_icons/'.getProfileImage(getUserDataByID("profile_image", session("session_id"))).'.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ getUserDataByID('profile_image', session('session_id')) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ $accountName }}</a>

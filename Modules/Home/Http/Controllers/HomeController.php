@@ -3,6 +3,7 @@
 namespace Modules\Home\Http\Controllers;
 
 use App\Models\GeneralModel;
+use Modules\News\Entities\News;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,7 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home::index');
+        $data = [
+            'news' => News::getAllNews()->limit(4)->get(),
+        ];
+        return view('home::index', $data);
     }
 
     /**

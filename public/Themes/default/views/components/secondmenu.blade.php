@@ -66,7 +66,7 @@ if (session('logged') === TRUE)
                                             <div class="List-item">
                                                 <a class="Link Link--block" href="/en-us/">
                                                     <div class="Avatar Avatar--anon Avatar--goldLarge SiteNav-avatar">
-                                                        <div class="Avatar-image" style="background-image: url('{{ url('/img/profile_icons/'.getProfileImage(getUserDataByID("profile_image", session("session_id"))).'.jpg') }}')!important"></div>
+                                                        <div class="Avatar-image" style="background-image: url('{{ getUserDataByID('profile_image', session('session_id')) }}')!important"></div>
                                                     </div>
                                                 </a>
                                             </div>

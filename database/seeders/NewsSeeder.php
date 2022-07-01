@@ -21,14 +21,9 @@ class NewsSeeder extends Seeder
                 'title'         => 'Example news',
                 'content'       => 'test',
                 'author'        => null,
-                'image'         => 1,
-            ],
-        ]);
-
-        DB::table('news_images')->insert([
-            [
-                'image'         => 'default.jpg',
-                'uploaded_by'   => null,
+                'images'         => null,
+                'created_at'    => now()->format('Y-m-d H:i:s'),
+                'updated_at'    => now()->format('Y-m-d H:i:s'),
             ],
         ]);
     }

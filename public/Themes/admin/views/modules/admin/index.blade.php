@@ -40,7 +40,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Banned Accounts</span>
-                <span class="info-box-number">0</span>
+                <span class="info-box-number">{{ getAllUser()->where('status', 'banned')->count() }}</span>
               </div>
             </div>
           </div>

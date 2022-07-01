@@ -84,7 +84,7 @@
                     <div class="form-group">
                       <label for="exampleSelectBorder">Account activation</label>
                       <select class="custom-select form-control-border" id="exampleSelectBorder">
-                        <option @if (getDBSettings('user_activation') == 'TRUE') selected @endif>On</option>
+                        <option @if (getDBSettings('user_activation') == 'TRUE') selected @endif disabled>On</option>
                         <option @if (getDBSettings('user_activation') == 'FALSE') selected @endif>Off</option>
                       </select>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="card-header">
                   <h3 class="card-title">E-Mail</h3>
                   <div class="card-tools">
-                    
+
                   </div>
                   <!-- /.card-tools -->
                 </div>

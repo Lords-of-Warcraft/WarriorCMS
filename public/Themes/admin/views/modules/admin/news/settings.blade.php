@@ -78,7 +78,7 @@
                 </div>
                 <div class="card-footer clearfix">
                   <div class="pagination pagination-sm m-0 float-right">
-                    <a type="button" class="btn btn-block btn-primary" href="#">Create news</a>
+                    <a type="button" class="btn btn-block btn-primary" href="{{ route('create_news') }}">Create news</a>
                   </div>
                 </div>
                 <!-- /.card-body -->

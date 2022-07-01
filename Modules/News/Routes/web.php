@@ -15,3 +15,8 @@ Route::prefix('news')->middleware(['installstatus', 'theme:'.Config('theme.activ
     Theme::set(Config('theme.active'));
     Route::get('/', 'NewsController@index');
 });
+
+Route::prefix('admin')->middleware(['installstatus', 'theme:admin', 'logged', 'admin'])->group(function() {
+    Route::get('/news/create', 'NewsController@create_news')->name('create_news');
+    Route::post('/news/insert', 'NewsController@insert_news')->name('admin_insert_news');
+});

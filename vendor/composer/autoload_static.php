@@ -194,6 +194,7 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'C' => 
         array (
             'Cron\\' => 5,
+            'Creativeorange\\Gravatar\\' => 24,
             'Codedge\\Updater\\' => 16,
             'Carbon\\' => 7,
         ),
@@ -579,6 +580,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Creativeorange\\Gravatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/creativeorange/gravatar/src',
+        ),
         'Codedge\\Updater\\' => 
         array (
             0 => __DIR__ . '/..' . '/codedge/laravel-selfupdater/src',
@@ -632,6 +637,7 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Auth' => __DIR__ . '/../..' . '/app/Models/Auth.php',
         'App\\Models\\GeneralModel' => __DIR__ . '/../..' . '/app/Models/GeneralModel.php',
+        'App\\Models\\Newsimage' => __DIR__ . '/../..' . '/app/Models/Newsimage.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -803,6 +809,10 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Codedge\\Updater\\UpdaterManager' => __DIR__ . '/..' . '/codedge/laravel-selfupdater/src/UpdaterManager.php',
         'Codedge\\Updater\\UpdaterServiceProvider' => __DIR__ . '/..' . '/codedge/laravel-selfupdater/src/UpdaterServiceProvider.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Creativeorange\\Gravatar\\Exceptions\\InvalidEmailException' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Exceptions/InvalidEmailException.php',
+        'Creativeorange\\Gravatar\\Facades\\Gravatar' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Facades/Gravatar.php',
+        'Creativeorange\\Gravatar\\Gravatar' => __DIR__ . '/..' . '/creativeorange/gravatar/src/Gravatar.php',
+        'Creativeorange\\Gravatar\\GravatarServiceProvider' => __DIR__ . '/..' . '/creativeorange/gravatar/src/GravatarServiceProvider.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -815,6 +825,7 @@ class ComposerStaticInitb33c2f1ed9051feb41f22c677b15aee1
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\ModulesSeeder' => __DIR__ . '/../..' . '/database/seeders/ModulesSeeder.php',
+        'Database\\Seeders\\NewsSeeder' => __DIR__ . '/../..' . '/database/seeders/NewsSeeder.php',
         'Database\\Seeders\\SettingsSeeder' => __DIR__ . '/../..' . '/database/seeders/SettingsSeeder.php',
         'DebugBar\\Bridge\\CacheCacheCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
         'DebugBar\\Bridge\\DoctrineCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',

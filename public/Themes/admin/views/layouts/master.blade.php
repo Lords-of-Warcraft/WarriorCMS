@@ -41,12 +41,16 @@
         <!-- ChartJS -->
         <script src="{{ Theme::assets('plugins/chart.js/Chart.min.js') }}"></script>
 
+
         <!-- Bootstrap -->
+        <script src="{{ Theme::assets('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+        <script>
+            $(function () {
+              bsCustomFileInput.init();
+            });
+        </script>
 
         <!-- Fontawesome -->
         <script src="{{ Theme::assets('plugins/fontawesome-free/js/all.min.js') }}"></script>
-        <script>
-            
-        </script>
     </body>
 </html>

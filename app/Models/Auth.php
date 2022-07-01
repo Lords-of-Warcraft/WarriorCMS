@@ -101,7 +101,7 @@ class Auth extends Model
             ]);
         }
 
-        return redirect('/home')->with('success', 'Logged in'); 
+        return redirect('/home')->with('success', 'Logged in');
 
     }
 
@@ -197,9 +197,18 @@ class Auth extends Model
 				DB::table('account_access')->insert($insert3);
 			}
 
+            if (getDBSettings('user_activation') == 'FALSE')
+            {
+                $status = 'active';
+            } else if (getDBSettings('user_activation') == 'TRUE')
+            {
+                $status = 'pending';
+            }
+
             DB::connection('web')->table('profiles')->insert([
                 'id'    => $id,
                 'name'  => $username,
+                'status'=> $status,
                 'mail'  => $email
             ]);
 

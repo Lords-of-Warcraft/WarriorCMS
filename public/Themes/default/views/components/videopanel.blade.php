@@ -61,7 +61,7 @@
         </div>
         <div class="space-large space-huge" media-wide="space-huge" queryselectoralways="0"
             media-original="space-large"></div>
-        <x-latest_news />
+        <x-latest_news :news="$news" />
         <div class="space-normal"></div>
     </div>
 </div>

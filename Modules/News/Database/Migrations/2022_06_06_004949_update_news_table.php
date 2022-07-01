@@ -14,7 +14,7 @@ class UpdateNewsTable extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->integer('author')->default(null)->nullable();
+            $table->integer('author')->default(null)->nullable()->after('content');
             $table->integer('image')->default(1)->after('content');
         });
     }

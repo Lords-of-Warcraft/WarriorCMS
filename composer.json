@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "codedge/laravel-selfupdater": "^3.4",
+        "creativeorange/gravatar": "~1.0",
         "duelistrag3/laravel-config-writer": "^2.0",
         "duelistrag3/php-wowemu-auth": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
